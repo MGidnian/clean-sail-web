@@ -9,6 +9,7 @@ import {
   CarouselPrevious,
   CarouselNext
 } from "@/components/ui/carousel";
+import { useAutoplayCarousel } from '@/lib/use-autoplay-carousel';
 
 // Define review data structure
 interface Review {
@@ -61,6 +62,9 @@ export const Reviews = () => {
     }
   ];
 
+  // Use autoplay carousel hook
+  const { setApi, handleMouseEnter, handleMouseLeave } = useAutoplayCarousel(3000);
+
   // Log event to Clarity when carousel interacted with
   const handleCarouselInteraction = () => {
     if (window.clarity) {
@@ -105,17 +109,18 @@ export const Reviews = () => {
           dir="ltr"
           className="testimonial-carousel"
           onClick={handleCarouselInteraction}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
           <Carousel 
             opts={{
               align: "start",
               loop: true,
               dragFree: true,
-              containScroll: "trimSnaps",
-              autoplay: true,
-              interval: 3000
+              containScroll: "trimSnaps"
             }}
             className="w-full"
+            setApi={setApi}
           >
             <CarouselContent>
               {reviews.map(review => (

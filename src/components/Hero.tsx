@@ -41,7 +41,7 @@ export const Hero = () => {
               {t('hero.subtitle')}
             </p>
             
-            <div className="flex flex-col sm:flex-row justify-center md:justify-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
               {/* App Store Button */}
               <button 
                 onClick={handleAppStoreClick}
