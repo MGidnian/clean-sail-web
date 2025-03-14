@@ -1,13 +1,28 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React from 'react';
+import { LanguageProvider } from '@/contexts/LanguageContext';
+import { Layout } from '@/components/Layout';
+import { Hero } from '@/components/Hero';
+import { Values } from '@/components/Values';
+import { Reviews } from '@/components/Reviews';
+import { Brands } from '@/components/Brands';
+import { Features } from '@/components/Features';
+import { CtaSection } from '@/components/CtaSection';
+import { Faq } from '@/components/Faq';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <LanguageProvider>
+      <Layout>
+        <Hero />
+        <Values />
+        <Reviews />
+        <Brands />
+        <Features />
+        <CtaSection />
+        <Faq />
+      </Layout>
+    </LanguageProvider>
   );
 };
 
