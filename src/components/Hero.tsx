@@ -41,7 +41,7 @@ export const Hero = () => {
               {t('hero.subtitle')}
             </p>
             
-            <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+            <div className="flex flex-col sm:flex-row justify-center md:justify-center gap-4">
               {/* App Store Button */}
               <button 
                 onClick={handleAppStoreClick}
@@ -72,7 +72,7 @@ export const Hero = () => {
           <div className="w-full md:w-1/2 flex justify-center md:justify-end">
             <div className="relative">
               <img 
-                src="/public/images/iphone-mockup.png" 
+                src="/public/lovable-uploads/c9b77f11-2cd4-4c5d-a6e2-2adf8aec9ebf.png" 
                 alt="iPhone with Fisherman App" 
                 className="w-auto h-[500px] object-contain animate-fade-in"
               />

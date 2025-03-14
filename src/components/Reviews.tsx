@@ -2,6 +2,13 @@
 import React, { useRef, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Star } from 'lucide-react';
+import { 
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext
+} from "@/components/ui/carousel";
 
 // Define review data structure
 interface Review {
@@ -14,8 +21,7 @@ interface Review {
 
 export const Reviews = () => {
   const { t, isRtl } = useLanguage();
-  const carouselRef = useRef<HTMLDivElement>(null);
-
+  
   // Review data
   const reviews: Review[] = [
     {
@@ -62,20 +68,6 @@ export const Reviews = () => {
     }
   };
 
-  // Set up carousel interaction tracking
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (carousel) {
-      carousel.addEventListener('mousedown', handleCarouselInteraction);
-      carousel.addEventListener('touchstart', handleCarouselInteraction);
-      
-      return () => {
-        carousel.removeEventListener('mousedown', handleCarouselInteraction);
-        carousel.removeEventListener('touchstart', handleCarouselInteraction);
-      };
-    }
-  }, []);
-
   // Render stars based on rating
   const renderStars = (rating: number) => {
     return Array(5).fill(0).map((_, i) => (
@@ -110,25 +102,43 @@ export const Reviews = () => {
         </div>
         
         <div 
-          ref={carouselRef}
-          className="testimonial-carousel overflow-x-auto pb-4 hide-scrollbar" 
           dir="ltr"
+          className="testimonial-carousel"
+          onClick={handleCarouselInteraction}
         >
-          <div className="flex space-x-4">
-            {reviews.map(review => (
-              <div 
-                key={review.id} 
-                className="testimonial-item bg-white rounded-xl p-5 shadow-sm flex-shrink-0 w-[300px] md:w-[350px]"
-              >
-                <div className="flex justify-between items-start mb-2">
-                  <div className="flex">{renderStars(review.rating)}</div>
-                  <div className="text-sm text-gray-500">{review.date}</div>
-                </div>
-                <div className="mb-2 font-semibold">{review.author}</div>
-                <p className="text-gray-700 text-sm whitespace-pre-line">{review.text}</p>
-              </div>
-            ))}
-          </div>
+          <Carousel 
+            opts={{
+              align: "start",
+              loop: true,
+              dragFree: true,
+              containScroll: "trimSnaps",
+              autoplay: true,
+              interval: 3000
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {reviews.map(review => (
+                <CarouselItem key={review.id} className="md:basis-1/2 lg:basis-1/3">
+                  <div 
+                    className="testimonial-item bg-white rounded-xl p-5 shadow-sm h-full"
+                    dir={isRtl ? "rtl" : "ltr"}
+                  >
+                    <div className="flex justify-between items-start mb-2">
+                      <div className="flex">{renderStars(review.rating)}</div>
+                      <div className="text-sm text-gray-500">{review.date}</div>
+                    </div>
+                    <div className="mb-2 font-semibold">{review.author}</div>
+                    <p className="text-gray-700 text-sm whitespace-pre-line">{review.text}</p>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="hidden md:flex">
+              <CarouselPrevious className="left-0" />
+              <CarouselNext className="right-0" />
+            </div>
+          </Carousel>
         </div>
       </div>
     </section>

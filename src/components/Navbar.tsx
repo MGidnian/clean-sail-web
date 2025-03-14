@@ -61,7 +61,7 @@ export const Navbar = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-8">
             <a 
               href="#features" 
               className="text-sm font-medium hover:text-fisherman-blue transition-colors"
