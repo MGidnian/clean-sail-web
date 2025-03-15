@@ -72,8 +72,8 @@ export const MessageCarousel = () => {
     },
   ];
 
-  // Use autoplay carousel hook with longer interval for messages (2 seconds)
-  const { setApi, handleMouseEnter, handleMouseLeave } = useAutoplayCarousel(2000);
+  // Use autoplay carousel hook with faster interval for messages (1 second)
+  const { setApi, handleMouseEnter, handleMouseLeave } = useAutoplayCarousel(1000);
 
   // Log event to Clarity when carousel interacted with
   const handleCarouselInteraction = () => {
@@ -109,15 +109,15 @@ export const MessageCarousel = () => {
             className="w-full"
             setApi={setApi}
           >
-            <CarouselContent className="gap-4">
+            <CarouselContent className="gap-2">
               {messages.map(message => (
-                <CarouselItem key={message.id} className="md:basis-1/3 lg:basis-1/4 pl-4">
+                <CarouselItem key={message.id} className="md:basis-1/4 lg:basis-1/5 pl-2">
                   <div 
                     className="message-wrapper h-full"
                     dir={isRtl ? "rtl" : "ltr"}
                   >
                     {/* iOS Message Bubble */}
-                    <div className="message-bubble bg-gray-200 rounded-2xl p-3 h-full max-w-[200px]">
+                    <div className="message-bubble bg-gray-200 rounded-2xl p-3 h-full max-w-[180px]">
                       <p className="text-black text-right text-sm">
                         {message.hasLink ? (
                           <>
