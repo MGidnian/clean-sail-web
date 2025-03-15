@@ -111,14 +111,14 @@ export const MessageCarousel = () => {
           >
             <CarouselContent className="gap-4">
               {messages.map(message => (
-                <CarouselItem key={message.id} className="md:basis-1/2 lg:basis-1/3 pl-4">
+                <CarouselItem key={message.id} className="md:basis-1/3 lg:basis-1/4 pl-4">
                   <div 
                     className="message-wrapper h-full"
                     dir={isRtl ? "rtl" : "ltr"}
                   >
                     {/* iOS Message Bubble */}
-                    <div className="message-bubble bg-gray-200 rounded-2xl p-4 h-full">
-                      <p className="text-black text-right">
+                    <div className="message-bubble bg-gray-200 rounded-2xl p-3 h-full max-w-[200px]">
+                      <p className="text-black text-right text-sm">
                         {message.hasLink ? (
                           <>
                             {message.text.split(/https?:\/\/\S+/).map((part, i, arr) => {
