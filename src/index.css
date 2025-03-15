@@ -132,4 +132,49 @@
   .faq-item.active .faq-answer {
     max-height: 500px;
   }
+  
+  /* iOS Message Styles */
+  .message-bubble {
+    position: relative;
+    border-radius: 18px;
+    max-width: 90%;
+    margin-left: auto;
+    padding: 10px 14px;
+    background-color: #e9e9eb;
+    color: #000;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    text-align: right;
+    direction: rtl;
+  }
+  
+  .message-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    right: -8px;
+    width: 16px;
+    height: 16px;
+    background-color: #e9e9eb;
+    border-bottom-left-radius: 16px;
+    clip-path: polygon(0 0, 0% 100%, 100% 100%);
+    transform: rotate(45deg);
+    display: none; /* Hiding the tail for now as it's tricky to get right */
+  }
+  
+  .message-time {
+    color: #8e8e93;
+    font-size: 11px;
+    margin-top: 4px;
+    text-align: center;
+  }
+  
+  /* Counter section animations */
+  .counter-display {
+    transition: all 0.2s ease;
+  }
+  
+  .counter-display:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
 }

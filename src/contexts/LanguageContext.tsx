@@ -26,6 +26,17 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.subtitle': 'האפליקציה מספר 1 בישראל לחסימת ספאם והודעות פישינג',
     'hero.download': 'הורד עכשיו',
     
+    // Counter Section
+    'counter.title': 'סינון מסביב לשעון',
+    'counter.subtitle': 'מספר ההודעות שסוננו עד כה',
+    'counter.since': 'מאז 1 במרץ 2025',
+    'counter.messages': 'הודעות',
+    'counter.rate': '20,000 הודעות מסוננות כל יום',
+    
+    // Message Control Section
+    'messageControl.title': 'מחזירים את השליטה',
+    'messageControl.subtitle': 'מפסיקים לקבל הודעות זבל, פרסומות ופישינג לדוגמא',
+    
     // Values
     'values.title': 'למה פישרמן?',
     'values.protection': 'הגנה מפני ספאם',
@@ -95,6 +106,17 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.title': 'Block Spam & Phishing Messages',
     'hero.subtitle': 'Israel\'s #1 App for Blocking Spam & Phishing Messages',
     'hero.download': 'Download Now',
+    
+    // Counter Section
+    'counter.title': '24/7 Message Filtering',
+    'counter.subtitle': 'Messages filtered so far',
+    'counter.since': 'Since March 1, 2025',
+    'counter.messages': 'messages',
+    'counter.rate': '20,000 messages filtered every day',
+    
+    // Message Control Section
+    'messageControl.title': 'Take Back Control',
+    'messageControl.subtitle': 'Stop receiving spam, ads and phishing messages like these',
     
     // Values
     'values.title': 'Why Fisherman?',

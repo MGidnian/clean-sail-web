@@ -3,6 +3,8 @@ import React from 'react';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import { Layout } from '@/components/Layout';
 import { Hero } from '@/components/Hero';
+import { Counter } from '@/components/Counter';
+import { MessageCarousel } from '@/components/MessageCarousel';
 import { Features } from '@/components/Features';
 import { Values } from '@/components/Values';
 import { Reviews } from '@/components/Reviews';
@@ -15,6 +17,8 @@ const Index = () => {
     <LanguageProvider>
       <Layout>
         <Hero />
+        <Counter />
+        <MessageCarousel />
         <Features />
         <Values />
         <Reviews />
