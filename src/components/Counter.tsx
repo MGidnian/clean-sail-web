@@ -39,14 +39,15 @@ export const Counter = () => {
   }, []);
   
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-fisherman-blue">
       <div className="container mx-auto px-4 md:px-6 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8">
+        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-white">
           {t('counter.title')}
         </h2>
         
         <div className="counter-display bg-white rounded-lg p-6 border border-gray-100 shadow-sm max-w-lg mx-auto">
-          <span className="text-4xl md:text-6xl font-mono font-bold text-fisherman-blue">
+          <span className="text-4xl md:text-6xl font-mono font-bold text-fisherman-blue flex justify-center items-center">
+            <span className="text-3xl md:text-5xl mr-1">+</span>
             {Math.floor(count).toLocaleString()}
           </span>
         </div>

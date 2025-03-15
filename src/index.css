@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -176,5 +175,35 @@
   .counter-display:hover {
     transform: scale(1.03);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Message carousel improvements */
+  .message-carousel-container {
+    padding: 20px 0;
+    position: relative;
+  }
+  
+  .message-carousel-container:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 80px;
+    background: linear-gradient(to right, rgba(248, 249, 250, 0), rgba(248, 249, 250, 1));
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  .message-carousel-container:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 80px;
+    background: linear-gradient(to left, rgba(248, 249, 250, 0), rgba(248, 249, 250, 1));
+    z-index: 2;
+    pointer-events: none;
   }
 }

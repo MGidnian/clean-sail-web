@@ -5,8 +5,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselPrevious,
-  CarouselNext
 } from "@/components/ui/carousel";
 import { useAutoplayCarousel } from '@/lib/use-autoplay-carousel';
 
@@ -14,47 +12,68 @@ import { useAutoplayCarousel } from '@/lib/use-autoplay-carousel';
 interface Message {
   id: number;
   text: string;
-  time: string;
   hasLink?: boolean;
 }
 
 export const MessageCarousel = () => {
   const { t, isRtl } = useLanguage();
   
-  // Sample messages
+  // Combined spam and phishing messages
   const messages: Message[] = [
+    // Spam messages
     {
       id: 1,
-      text: "היי פרטנר, הגדרות הגלישה במכשירך לא מעודכנות. זה יכול לקרות אם החלפת מכשיר לאחרונה, ולהשפיע על הגלישה במכשירך. בדקות הקרובות תקבל הודעה שמכילה את כל ההגדרות המתאימות. תודה, הפרטנרים שלך.",
-      time: "Tuesday 11:44"
-    },
-    {
-      id: 2,
-      text: "היי פרטנר, לצפייה בחשבוניות האחרונות שלך באיזור האישי באתר פרטנר יש להיכנס לקישור הבא: https://www.partner.co.il/n/mypartner/invoice תודה, הפרטנרים שלך",
-      time: "Wednesday 09:18",
+      text: "שחקן פוקר! 15% בונוס היום! בוא לשחק איתנו אומהה והולדם בקלאב הכי פעיל בישראל https://did.li/pokerKatz",
       hasLink: true
     },
     {
+      id: 2,
+      text: "מה המצווה שלך?💖 1 נר שבת 2 תפילין 3 שמע ישראל 4 שבת",
+    },
+    {
       id: 3,
-      text: "שלום, יש לך חבילה בהמתנה. לפרטים ומעקב לחץ כאן: http://bit.ly/3pAckg",
-      time: "Thursday 15:32",
+      text: "סמים שקיות רפואי🍀 מתנות למצטרפים לערוץ החדש🎁😍 https://bif.ly/zUfiSxU",
       hasLink: true
     },
     {
       id: 4,
-      text: "הודעה ממשרד הבריאות: במסגרת המאבק בנגיף הקורונה עליך להקפיד על הנחיות הריחוק החברתי ועטיית מסיכה. לפרטים נוספים: https://corona.health.gov.il",
-      time: "Friday 12:05",
+      text: "במידה ויש לך החזר מס לשנת 2018 הוא עלול להימחק. אל תפספסו את הכספים שלכם. לבדיקה הירשמו https://taxstealingz.com/",
       hasLink: true
     },
     {
       id: 5,
-      text: "חברת החשמל: קיימת הפסקת חשמל יזומה באזורך בין השעות 09:00-12:00. לבירורים: 103",
-      time: "Monday 08:15"
-    }
+      text: "לקראת הבחירות, במי תבחרו? 1 ליכוד 2 העבודה 3 גנץ",
+    },
+    // Phishing messages
+    {
+      id: 6,
+      text: "חשבון Bit שלך ננעל עבור סיבות אבטחה. אנו מזהים את כניסה ממכשיר לא ידוע, אנא אמת זהותך, אחרת החשבון שלך יושבת https://ln.run/fmxJ7",
+      hasLink: true
+    },
+    {
+      id: 7,
+      text: "היי, מחברת Cal, זיהינו פעילות חשודה בכרטיס שלך. אם לא תאמת את עצמך בקרוב, הכרטיס שלך יופסק. ln.run/POX8",
+      hasLink: true
+    },
+    {
+      id: 8,
+      text: "החבילה שלך ממתינה למשלוח יש דמי מכס/מסים שעליך לשלם על המשלוח. הסכום הוא 21.19₪ https://did.li/rgKz",
+      hasLink: true
+    },
+    {
+      id: 9,
+      text: "חשבון אפליקציית Yellow שלך ננעל זמנית לצורכי אבטחה. נא לאמת את זהותך בהקדם כדי למנוע השבתת החשבון: go-yellow.br/Security",
+      hasLink: true
+    },
+    {
+      id: 10,
+      text: "שלום, הבחנו בכניסה חשודה לחשבון MAX שלך. נא לאמת את פרטיך, אחרת הכרטיס שלך ייחסם: max-finance.ly/login",
+      hasLink: true
+    },
   ];
 
-  // Use autoplay carousel hook with longer interval for messages
-  const { setApi, handleMouseEnter, handleMouseLeave } = useAutoplayCarousel(5000);
+  // Use autoplay carousel hook with longer interval for messages (2 seconds)
+  const { setApi, handleMouseEnter, handleMouseLeave } = useAutoplayCarousel(2000);
 
   // Log event to Clarity when carousel interacted with
   const handleCarouselInteraction = () => {
@@ -76,42 +95,48 @@ export const MessageCarousel = () => {
         </div>
         
         <div 
-          dir="ltr"
-          className="message-carousel max-w-2xl mx-auto"
+          className="message-carousel-container max-w-4xl mx-auto overflow-hidden"
           onClick={handleCarouselInteraction}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
           <Carousel 
             opts={{
-              align: "center",
+              align: "start",
               loop: true,
+              dragFree: true,
             }}
             className="w-full"
             setApi={setApi}
           >
-            <CarouselContent>
+            <CarouselContent className="gap-4">
               {messages.map(message => (
-                <CarouselItem key={message.id} className="md:basis-4/5">
+                <CarouselItem key={message.id} className="md:basis-1/2 lg:basis-1/3 pl-4">
                   <div 
-                    className="message-wrapper"
+                    className="message-wrapper h-full"
                     dir={isRtl ? "rtl" : "ltr"}
                   >
                     {/* iOS Message Bubble */}
-                    <div className="message-bubble bg-gray-200 rounded-2xl p-4 mb-2 max-w-full relative mr-4 ml-4">
+                    <div className="message-bubble bg-gray-200 rounded-2xl p-4 h-full">
                       <p className="text-black text-right">
                         {message.hasLink ? (
                           <>
-                            {message.text.split('http').map((part, i, arr) => {
-                              if (i === 0) return part;
-                              const link = 'http' + part.split(' ')[0];
-                              const restText = part.substring(link.length - 4);
+                            {message.text.split(/https?:\/\/\S+/).map((part, i, arr) => {
+                              if (i === 0 && arr.length === 1) return part;
+                              
+                              if (i === arr.length - 1) return part;
+                              
+                              const nextLink = message.text.substring(
+                                message.text.indexOf(part) + part.length, 
+                                message.text.indexOf(arr[i+1])
+                              ).trim();
+                              
                               return (
                                 <React.Fragment key={i}>
-                                  <span className="text-blue-500 underline">
-                                    {link}
-                                  </span>
-                                  {restText}
+                                  {part}
+                                  {nextLink && (
+                                    <span className="text-blue-500 underline"> {nextLink} </span>
+                                  )}
                                 </React.Fragment>
                               );
                             })}
@@ -121,19 +146,10 @@ export const MessageCarousel = () => {
                         )}
                       </p>
                     </div>
-                    
-                    {/* Message Time */}
-                    <div className="message-time text-gray-500 text-xs text-center mb-4">
-                      {message.time}
-                    </div>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center gap-2 mt-4">
-              <CarouselPrevious className="static transform-none" />
-              <CarouselNext className="static transform-none" />
-            </div>
           </Carousel>
         </div>
       </div>
