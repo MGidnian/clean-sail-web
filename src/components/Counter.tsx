@@ -49,8 +49,7 @@ export const Counter = () => {
         </div>
         
         <div className="counter-display bg-white rounded-lg p-6 border border-gray-100 shadow-sm max-w-lg mx-auto flex justify-center items-center">
-          {/* Shield is always placed on the left regardless of language direction, with increased size */}
-          <ShieldCheck className="w-[21px] h-[21px] md:w-[21px] h-[21px] text-fisherman-blue mr-4" />
+          <ShieldCheck className="w-16 h-16 text-fisherman-blue mr-4" />
           <span className="text-4xl md:text-6xl font-mono font-bold text-fisherman-blue flex items-center">
             {isRtl ? (
               <>

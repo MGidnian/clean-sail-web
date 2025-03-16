@@ -1,41 +1,61 @@
 
-import { useCallback, useEffect, useState } from "react";
-import useAutoplay from "embla-carousel-autoplay";
-import type { CarouselApi } from "@/components/ui/carousel";
+import { useState, useEffect, useRef } from 'react';
+import { type CarouselApi } from '@/components/ui/carousel';
 
-export function useAutoplayCarousel(interval = 2000) {
+export function useAutoplayCarousel(interval = 3000, shouldAutoPlay = true) {
   const [api, setApi] = useState<CarouselApi>();
-  const [plugin, setPlugin] = useState<ReturnType<typeof useAutoplay>>();
-  const [isPaused, setIsPaused] = useState(false);
-
-  const autoplayPlugin = useAutoplay({
-    delay: interval,
-    stopOnMouseEnter: false,
-    stopOnInteraction: false,
-    playOnInit: true,
-  });
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
-    if (!api) return;
-    setPlugin(autoplayPlugin);
-  }, [api, autoplayPlugin]);
+    if (!api || !shouldAutoPlay) return;
 
-  const handleMouseEnter = useCallback(() => {
-    if (!plugin) return;
-    plugin.stop();
-    setIsPaused(true);
-  }, [plugin]);
+    // Clear any existing interval
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
 
-  const handleMouseLeave = useCallback(() => {
-    if (!plugin) return;
-    plugin.play();
-    setIsPaused(false);
-  }, [plugin]);
+    // Set up autoplay with consistent timing
+    const startAutoplay = () => {
+      intervalRef.current = setInterval(() => {
+        api.scrollNext();
+      }, interval);
+    };
+
+    // Start autoplay
+    startAutoplay();
+
+    // Cleanup on unmount
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [api, interval, shouldAutoPlay]);
+
+  // Pause autoplay on hover/touch
+  const handleMouseEnter = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  };
+
+  // Resume autoplay when not hovering
+  const handleMouseLeave = () => {
+    if (!api || !shouldAutoPlay) return;
+    
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    
+    intervalRef.current = setInterval(() => {
+      api.scrollNext();
+    }, interval);
+  };
 
   return {
     setApi,
     handleMouseEnter,
     handleMouseLeave,
-    isPaused,
   };
 }
