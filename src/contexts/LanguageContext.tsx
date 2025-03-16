@@ -27,7 +27,7 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.download': 'הורד עכשיו',
     
     // Counter Section
-    'counter.title': 'סינון מסביב לשעון',
+    'counter.title': 'כמות ההודעות שפישרמן סינן עד כה',
     'counter.subtitle': 'מספר ההודעות שסוננו עד כה',
     'counter.since': 'מאז 1 במרץ 2025',
     'counter.messages': 'הודעות',
@@ -108,7 +108,7 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.download': 'Download Now',
     
     // Counter Section
-    'counter.title': '24/7 Message Filtering',
+    'counter.title': 'Messages Filtered by Fisherman So Far',
     'counter.subtitle': 'Messages filtered so far',
     'counter.since': 'Since March 1, 2025',
     'counter.messages': 'messages',

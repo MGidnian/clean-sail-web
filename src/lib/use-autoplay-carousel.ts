@@ -16,7 +16,7 @@ export function useAutoplayCarousel(interval = 3000, shouldAutoPlay = true) {
 
     // Set up autoplay
     intervalRef.current = setInterval(() => {
-      api.scrollNext({ behavior: 'smooth' });
+      api.scrollNext();
     }, interval);
 
     // Cleanup on unmount
@@ -44,7 +44,7 @@ export function useAutoplayCarousel(interval = 3000, shouldAutoPlay = true) {
     }
     
     intervalRef.current = setInterval(() => {
-      api.scrollNext({ behavior: 'smooth' });
+      api.scrollNext();
     }, interval);
   };
 
