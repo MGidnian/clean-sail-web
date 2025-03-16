@@ -1,6 +1,6 @@
 
 import { useCallback, useEffect, useState } from "react";
-import { useAutoplay } from "embla-carousel-autoplay";
+import useAutoplay from "embla-carousel-autoplay";
 import type { CarouselApi } from "@/components/ui/carousel";
 
 export function useAutoplayCarousel(interval = 2000) {
