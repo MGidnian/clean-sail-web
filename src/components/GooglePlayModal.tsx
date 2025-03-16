@@ -174,6 +174,7 @@ export const GooglePlayModal: React.FC<GooglePlayModalProps> = ({ isOpen, onClos
             <div className="space-y-2">
               <Label htmlFor="phone">{t('modal.phone')}</Label>
               <div className="flex space-x-2">
+                {/* Always place prefix select on the left side, regardless of language direction */}
                 <div className="w-1/3">
                   <Select value={prefix} onValueChange={(value) => handleInputChange('prefix', value)}>
                     <SelectTrigger>

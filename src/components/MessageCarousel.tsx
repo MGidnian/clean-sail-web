@@ -70,10 +70,35 @@ export const MessageCarousel = () => {
       text: "שלום, הבחנו בכניסה חשודה לחשבון MAX שלך.\nנא לאמת את פרטיך, אחרת הכרטיס שלך ייחסם:\nmax-finance.ly/login",
       hasLink: true
     },
+    // Adding 5 more example messages
+    {
+      id: 11,
+      text: "שלום, אנו מיישמים נהלי אבטחה חדשים בחשבון הבנק שלך.\nלצורך אימות, אנא עדכן את פרטיך בקישור:\nbank-leumi.security-id.co/verify",
+      hasLink: true
+    },
+    {
+      id: 12,
+      text: "הודעה דחופה מביטוח לאומי: זוהתה בעיה בתשלום הקצבה האחרון.\nכדי לקבל את יתרת הסכום נא להיכנס:\nbtl-verify.com/refund",
+      hasLink: true
+    },
+    {
+      id: 13,
+      text: "✨✨ הצטרפו לקבוצת ההשקעות הסודית שלנו! ✨✨\nרק השבוע: 30% הנחה על קורס המסחר המוביל\nלפרטים: https://quick.money/invest2023",
+      hasLink: true
+    },
+    {
+      id: 14,
+      text: "משרד התחבורה - עדכון חשוב\nרישיון הנהיגה שלך עומד לפוג בקרוב.\nנא לחדש כאן: mot-renew.co.il/license",
+      hasLink: true
+    },
+    {
+      id: 15,
+      text: "סקר בנושא בחירות 2023 🗳️\nמי לדעתך המועמד המוביל?\n1. נתניהו\n2. לפיד\n3. בנט\n4. גנץ\nהמשיבים יכנסו להגרלת פרס!",
+    },
   ];
 
-  // Use autoplay carousel hook with slower interval (5 seconds) for a steadier movement
-  const { setApi, handleMouseEnter, handleMouseLeave } = useAutoplayCarousel(5000);
+  // Use autoplay carousel hook with very slow movement, matching the brands carousel speed
+  const { setApi, handleMouseEnter, handleMouseLeave } = useAutoplayCarousel(20000);
 
   // Log event to Clarity when carousel interacted with
   const handleCarouselInteraction = () => {
@@ -95,7 +120,7 @@ export const MessageCarousel = () => {
         </div>
         
         <div 
-          className="message-carousel-container max-w-5xl mx-auto overflow-hidden"
+          className="message-carousel-container max-w-6xl mx-auto overflow-hidden"
           onClick={handleCarouselInteraction}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
@@ -117,7 +142,7 @@ export const MessageCarousel = () => {
                     dir={isRtl ? "rtl" : "ltr"}
                   >
                     {/* iOS Message Bubble */}
-                    <div className="message-bubble bg-gray-200 rounded-2xl p-3 h-full w-[240px] min-h-[120px]">
+                    <div className="message-bubble bg-gray-200 rounded-2xl p-3 h-full w-[288px] min-h-[120px]">
                       <p className="text-black text-right text-sm whitespace-pre-line">
                         {message.hasLink ? (
                           <>
