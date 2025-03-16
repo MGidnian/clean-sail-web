@@ -82,6 +82,29 @@ export const Reviews = () => {
     ));
   };
 
+  // Render partially filled star
+  const renderRatingStars = () => {
+    const fullStars = Math.floor(4.9);
+    const partialStar = 4.9 - fullStars;
+    
+    return (
+      <div className="flex">
+        {/* Render full stars */}
+        {Array(fullStars).fill(0).map((_, i) => (
+          <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+        ))}
+        
+        {/* Render partial star */}
+        <div className="relative w-6 h-6">
+          <Star className="w-6 h-6 fill-gray-200 text-gray-200 absolute" />
+          <div className="overflow-hidden absolute" style={{ width: `${partialStar * 100}%` }}>
+            <Star className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <section id="reviews" className="py-16 bg-fisherman-gray">
       <div className="container mx-auto px-4 md:px-6">
@@ -94,14 +117,10 @@ export const Reviews = () => {
             <div className="flex flex-col items-end mr-4">
               <div className="flex items-center">
                 <span className="text-4xl font-bold">{t('reviews.rating')}</span>
-                <span className="text-sm text-gray-500 ml-1">{t('reviews.outOf')}</span>
               </div>
-              <span className="text-sm text-gray-500">{t('reviews.count')}</span>
             </div>
             
-            <div className="flex">
-              {renderStars(5)}
-            </div>
+            {renderRatingStars()}
           </div>
         </div>
         

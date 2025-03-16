@@ -69,12 +69,12 @@ export const Features = () => {
                 onMouseEnter={() => handleFeatureHover(feature.id)}
               >
                 <div className="flex items-start">
-                  <div className={`rounded-full p-3 mr-4 ${feature.color}`}>
-                    <Icon className="h-6 w-6" />
+                  <div className={`rounded-full p-3 mr-6 ${feature.color}`}>
+                    <Icon className="h-7 w-7" />
                   </div>
                   
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">
+                  <div className="flex-1">
+                    <h3 className="text-xl font-semibold mb-3">
                       {t(`${feature.key}.title`)}
                     </h3>
                     <p className="text-gray-600">

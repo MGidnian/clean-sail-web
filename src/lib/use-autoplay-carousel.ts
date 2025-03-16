@@ -14,10 +14,15 @@ export function useAutoplayCarousel(interval = 3000, shouldAutoPlay = true) {
       clearInterval(intervalRef.current);
     }
 
-    // Set up autoplay
-    intervalRef.current = setInterval(() => {
-      api.scrollNext();
-    }, interval);
+    // Set up autoplay with consistent timing
+    const startAutoplay = () => {
+      intervalRef.current = setInterval(() => {
+        api.scrollNext();
+      }, interval);
+    };
+
+    // Start autoplay
+    startAutoplay();
 
     // Cleanup on unmount
     return () => {

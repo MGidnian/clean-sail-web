@@ -5,8 +5,8 @@
   <rect width="1100" height="120" fill="#0038b8" y="620"/>
   
   <!-- Star of David -->
-  <path d="M550,400 l-130.9,226.6 l261.8,0 z" fill="#fff" stroke="#0038b8" stroke-width="25"/>
-  <path d="M550,400 l130.9,-226.6 l-261.8,0 z" fill="#fff" stroke="#0038b8" stroke-width="25"/>
-  <path d="M416.8,308.3 l266.4,0 l-133.2,-230.8 z" fill="#0038b8"/>
-  <path d="M416.8,491.7 l266.4,0 l-133.2,230.8 z" fill="#0038b8"/>
+  <path d="M550,400 l-150,260 l300,0 z" fill="#fff" stroke="#0038b8" stroke-width="30"/>
+  <path d="M550,400 l150,-260 l-300,0 z" fill="#fff" stroke="#0038b8" stroke-width="30"/>
+  <path d="M400,400 l300,0 l-150,-260 z" fill="#0038b8"/>
+  <path d="M400,400 l300,0 l-150,260 z" fill="#0038b8"/>
 </svg>
