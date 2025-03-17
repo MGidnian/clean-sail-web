@@ -72,8 +72,8 @@ export const MessageCarousel = () => {
     },
   ];
 
-  // Use autoplay carousel hook with slower interval (5 seconds) for a steadier movement
-  const { setApi, handleMouseEnter, handleMouseLeave } = useAutoplayCarousel(5000);
+  // Use autoplay carousel hook with slower interval (7 seconds) for a steadier movement
+  const { setApi, handleMouseEnter, handleMouseLeave } = useAutoplayCarousel(7000);
 
   // Log event to Clarity when carousel interacted with
   const handleCarouselInteraction = () => {
@@ -109,16 +109,16 @@ export const MessageCarousel = () => {
             className="w-full"
             setApi={setApi}
           >
-            <CarouselContent className="gap-4">
+            <CarouselContent className={`gap-6 ${isRtl ? '-mr-6' : '-ml-6'}`}>
               {messages.map(message => (
-                <CarouselItem key={message.id} className="md:basis-1/3 lg:basis-1/4">
+                <CarouselItem key={message.id} className="md:basis-1/3 lg:basis-1/4 min-w-[260px]">
                   <div 
-                    className="message-wrapper h-full"
+                    className="message-wrapper h-full px-1"
                     dir={isRtl ? "rtl" : "ltr"}
                   >
                     {/* iOS Message Bubble */}
-                    <div className="message-bubble bg-gray-200 rounded-2xl p-3 h-full w-[240px] min-h-[120px]">
-                      <p className="text-black text-right text-sm whitespace-pre-line">
+                    <div className="message-bubble bg-gray-200 rounded-2xl p-3 h-full min-h-[120px] max-w-[240px] mx-auto">
+                      <p className="text-black text-right text-sm whitespace-pre-line break-words">
                         {message.hasLink ? (
                           <>
                             {message.text.split(/https?:\/\/\S+|[a-z0-9-]+\.[a-z]{2,}\/[a-zA-Z0-9-]+/).map((part, i, arr) => {

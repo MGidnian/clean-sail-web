@@ -4,7 +4,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { ShieldCheck } from 'lucide-react';
 
 export const Counter = () => {
-  const { t, isRtl } = useLanguage();
+  const { t } = useLanguage();
   const [count, setCount] = useState(0);
   
   useEffect(() => {
@@ -49,19 +49,10 @@ export const Counter = () => {
         </div>
         
         <div className="counter-display bg-white rounded-lg p-6 border border-gray-100 shadow-sm max-w-lg mx-auto flex justify-center items-center">
-          <ShieldCheck className="w-16 h-16 text-fisherman-blue mr-4" />
+          <ShieldCheck className="w-20 h-20 text-fisherman-blue mr-4 flex-shrink-0" />
           <span className="text-4xl md:text-6xl font-mono font-bold text-fisherman-blue flex items-center">
-            {isRtl ? (
-              <>
-                {Math.floor(count).toLocaleString()}
-                <span className="ml-1">+</span>
-              </>
-            ) : (
-              <>
-                <span className="mr-1">+</span>
-                {Math.floor(count).toLocaleString()}
-              </>
-            )}
+            <span className="mr-1">+</span>
+            {Math.floor(count).toLocaleString()}
           </span>
         </div>
       </div>

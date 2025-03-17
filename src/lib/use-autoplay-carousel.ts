@@ -1,6 +1,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { type CarouselApi } from '@/components/ui/carousel';
+import useAutoplay from 'embla-carousel-autoplay';
 
 export function useAutoplayCarousel(interval = 3000, shouldAutoPlay = true) {
   const [api, setApi] = useState<CarouselApi>();

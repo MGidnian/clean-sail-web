@@ -15,7 +15,7 @@ interface GooglePlayModalProps {
 }
 
 export const GooglePlayModal: React.FC<GooglePlayModalProps> = ({ isOpen, onClose }) => {
-  const { t } = useLanguage();
+  const { t, isRtl } = useLanguage();
   const { toast } = useToast();
   
   const [prefix, setPrefix] = useState('');
@@ -173,10 +173,10 @@ export const GooglePlayModal: React.FC<GooglePlayModalProps> = ({ isOpen, onClos
           {contactMethod === 'phone' ? (
             <div className="space-y-2">
               <Label htmlFor="phone">{t('modal.phone')}</Label>
-              <div className="flex space-x-2">
+              <div className={`flex ${isRtl ? 'flex-row-reverse' : 'flex-row'} space-x-2 ${isRtl ? 'space-x-reverse' : ''}`}>
                 <div className="w-1/3">
                   <Select value={prefix} onValueChange={(value) => handleInputChange('prefix', value)}>
-                    <SelectTrigger>
+                    <SelectTrigger className="w-full">
                       <SelectValue placeholder={t('modal.prefix')} />
                     </SelectTrigger>
                     <SelectContent>
