@@ -50,7 +50,7 @@ export const Counter = () => {
         
         <div className="counter-display bg-white rounded-lg p-6 border border-gray-100 shadow-sm max-w-lg mx-auto flex justify-center items-center">
           <div className="min-w-[96px] flex justify-center">
-            <ShieldCheck className="w-20 h-20 text-fisherman-blue flex-shrink-0" />
+            <ShieldCheck className="w-16 h-16 md:w-20 md:h-20 text-fisherman-blue flex-shrink-0" />
           </div>
           <span className="text-4xl md:text-6xl font-mono font-bold text-fisherman-blue flex items-center overflow-hidden">
             <span className="mr-1">+</span>

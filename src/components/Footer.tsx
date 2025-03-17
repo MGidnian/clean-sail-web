@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Instagram, Twitter, Facebook, Mail } from 'lucide-react';
+import { Instagram, Facebook, Mail, MessageSquare } from 'lucide-react';
 
 export const Footer = () => {
   const { t } = useLanguage();
@@ -66,9 +66,16 @@ export const Footer = () => {
             <a 
               href="#" 
               className="hover:text-blue-300 transition-colors p-2"
-              onClick={() => handleLinkClick('social', 'twitter')}
+              onClick={() => handleLinkClick('social', 'x')}
             >
-              <Twitter size={20} />
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 4L10.77 13.38" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M3 20L13.5 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M15 4H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M14 20L21 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M18 4V8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M17.5 16V20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </a>
             <a 
               href="#" 
@@ -76,6 +83,13 @@ export const Footer = () => {
               onClick={() => handleLinkClick('social', 'facebook')}
             >
               <Facebook size={20} />
+            </a>
+            <a 
+              href="#" 
+              className="hover:text-blue-300 transition-colors p-2"
+              onClick={() => handleLinkClick('social', 'whatsapp')}
+            >
+              <MessageSquare size={20} />
             </a>
             <a 
               href="mailto:info@fisherman.app" 

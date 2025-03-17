@@ -1,177 +1,159 @@
 
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { useMobile } from '@/hooks/use-mobile';
 
 export const Navbar = () => {
   const { t, toggleLanguage, language, isRtl } = useLanguage();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
+  const [isOpen, setIsOpen] = useState(false);
+  const isMobile = useMobile();
+  
+  // Close mobile menu when switching to desktop
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-    
-    // Log event to Clarity
-    if (window.clarity) {
-      window.clarity("event", "menu_toggle", {
-        state: !isMenuOpen ? "open" : "closed"
-      });
+    if (!isMobile && isOpen) {
+      setIsOpen(false);
     }
-  };
-
+  }, [isMobile, isOpen]);
+  
+  // Handle language toggle and log to Clarity
   const handleLanguageToggle = () => {
     toggleLanguage();
   };
-
-  const handleMenuItemClick = (item: string) => {
-    // Log event to Clarity
-    if (window.clarity) {
-      window.clarity("event", "menu_item_click", {
-        item
-      });
-    }
-  };
-
+  
+  // Handle download button click - direct to App Store
   const handleDownloadClick = () => {
-    // Open App Store link with UTM parameters
-    window.open('https://apps.apple.com/app/fisherman/id123456789?utm_source=website&utm_medium=navbar&utm_campaign=direct_download', '_blank');
+    window.open('https://apps.apple.com/app/fisherman/id123456789?utm_source=website&utm_medium=navbar&utm_campaign=download_button', '_blank');
     
     // Log event to Clarity
     if (window.clarity) {
       window.clarity("event", "navbar_download_click");
     }
+    
+    // Close mobile menu if open
+    if (isOpen) {
+      setIsOpen(false);
+    }
   };
-
+  
+  // Get language emoji
+  const getLanguageEmoji = () => {
+    return language === 'he' ? '🇮🇱' : '🇺🇸';
+  };
+  
+  // Handle scroll to section
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      
+      // Log event to Clarity
+      if (window.clarity) {
+        window.clarity("event", "navbar_section_click", {
+          section: sectionId
+        });
+      }
+      
+      // Close mobile menu if open
+      if (isOpen) {
+        setIsOpen(false);
+      }
+    }
+  };
+  
   return (
-    <nav 
-      className={`fixed top-0 w-full z-50 py-4 transition-all duration-300 ${
-        scrolled ? 'bg-white shadow-md' : 'bg-transparent'
-      }`}
-    >
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between">
+        <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <a href="#" className="flex items-center">
             <img 
               src="/public/lovable-uploads/cd6dbc8b-e617-4255-9828-6242b468cee5.png" 
               alt="Fisherman Logo" 
-              className="h-10 w-auto"
+              className="h-8 w-auto" 
             />
-            <span className="ml-2 text-xl font-bold">Fisherman</span>
+            <span className="text-lg font-bold ml-2">Fisherman</span>
           </a>
-
+          
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <a 
-              href="#features" 
-              className="text-sm font-medium hover:text-fisherman-blue transition-colors"
-              onClick={() => handleMenuItemClick('features')}
+          <div className="hidden md:flex items-center space-x-6">
+            <button 
+              onClick={() => scrollToSection('features')}
+              className="text-gray-700 hover:text-fisherman-blue"
             >
               {t('nav.features')}
-            </a>
-            <a 
-              href="#reviews" 
-              className="text-sm font-medium hover:text-fisherman-blue transition-colors"
-              onClick={() => handleMenuItemClick('reviews')}
+            </button>
+            <button 
+              onClick={() => scrollToSection('reviews')}
+              className="text-gray-700 hover:text-fisherman-blue"
             >
               {t('nav.reviews')}
-            </a>
-            <a 
-              href="#faq" 
-              className="text-sm font-medium hover:text-fisherman-blue transition-colors"
-              onClick={() => handleMenuItemClick('faq')}
+            </button>
+            <button 
+              onClick={() => scrollToSection('faq')}
+              className="text-gray-700 hover:text-fisherman-blue"
             >
               {t('nav.contact')}
-            </a>
-            
+            </button>
+          </div>
+          
+          {/* Action Buttons */}
+          <div className="flex items-center">
             {/* Language Toggle */}
             <button 
-              onClick={handleLanguageToggle} 
-              className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+              className="mr-4 text-lg"
+              onClick={handleLanguageToggle}
+              aria-label="Toggle language"
             >
-              <span className="text-lg">
-                {language === 'he' ? "🇮🇱" : "🇺🇸"}
-              </span>
+              {getLanguageEmoji()}
             </button>
             
             {/* Download Button */}
             <Button 
-              className="bg-fisherman-blue hover:bg-fisherman-darkBlue text-white rounded-full px-6"
               onClick={handleDownloadClick}
+              className="hidden md:block bg-fisherman-blue hover:bg-fisherman-darkBlue"
             >
               {t('nav.download')}
             </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center space-x-3">
-            {/* Language Toggle Mobile */}
-            <button 
-              onClick={handleLanguageToggle} 
-              className="p-2 rounded-full hover:bg-gray-100 transition-colors"
-            >
-              <span className="text-lg">
-                {language === 'he' ? "🇮🇱" : "🇺🇸"}
-              </span>
-            </button>
             
-            <button onClick={toggleMenu} className="text-gray-700">
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {/* Mobile Menu Button */}
+            <button 
+              className="md:hidden ml-4 p-2"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
       </div>
-
+      
       {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg mt-2 py-4 px-4 absolute w-full">
-          <div className="flex flex-col space-y-4">
-            <a 
-              href="#features" 
-              className="text-sm font-medium hover:text-fisherman-blue transition-colors"
-              onClick={() => {
-                handleMenuItemClick('features');
-                toggleMenu();
-              }}
+      {isOpen && (
+        <div className="md:hidden bg-white px-4 pt-2 pb-4 border-t border-gray-100">
+          <div className="flex flex-col space-y-3">
+            <button 
+              onClick={() => scrollToSection('features')}
+              className="text-gray-700 hover:text-fisherman-blue py-2"
             >
               {t('nav.features')}
-            </a>
-            <a 
-              href="#reviews" 
-              className="text-sm font-medium hover:text-fisherman-blue transition-colors"
-              onClick={() => {
-                handleMenuItemClick('reviews');
-                toggleMenu();
-              }}
+            </button>
+            <button 
+              onClick={() => scrollToSection('reviews')}
+              className="text-gray-700 hover:text-fisherman-blue py-2"
             >
               {t('nav.reviews')}
-            </a>
-            <a 
-              href="#faq" 
-              className="text-sm font-medium hover:text-fisherman-blue transition-colors"
-              onClick={() => {
-                handleMenuItemClick('faq');
-                toggleMenu();
-              }}
+            </button>
+            <button 
+              onClick={() => scrollToSection('faq')}
+              className="text-gray-700 hover:text-fisherman-blue py-2"
             >
               {t('nav.contact')}
-            </a>
+            </button>
             <Button 
-              className="bg-fisherman-blue hover:bg-fisherman-darkBlue text-white rounded-full"
-              onClick={() => {
-                handleDownloadClick();
-                toggleMenu();
-              }}
+              onClick={handleDownloadClick}
+              className="w-full bg-fisherman-blue hover:bg-fisherman-darkBlue mt-2"
             >
               {t('nav.download')}
             </Button>

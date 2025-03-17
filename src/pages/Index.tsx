@@ -11,6 +11,7 @@ import { Values } from '@/components/Values';
 import { Reviews } from '@/components/Reviews';
 import { CtaSection } from '@/components/CtaSection';
 import { Faq } from '@/components/Faq';
+import { DownloadButtons } from '@/components/DownloadButtons';
 
 const Index = () => {
   return (
@@ -21,6 +22,7 @@ const Index = () => {
         <Brands />
         <MessageCarousel />
         <Features />
+        <DownloadButtons />
         <Values />
         <Reviews />
         <CtaSection />

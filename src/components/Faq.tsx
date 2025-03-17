@@ -18,7 +18,11 @@ export const Faq = () => {
     { id: 1, key: 'faq1' },
     { id: 2, key: 'faq2' },
     { id: 3, key: 'faq3' },
-    { id: 4, key: 'faq4' }
+    { id: 4, key: 'faq4' },
+    { id: 5, key: 'faq5' },
+    { id: 6, key: 'faq6' },
+    { id: 7, key: 'faq7' },
+    { id: 8, key: 'faq8' }
   ];
   
   const toggleItem = (id: number) => {
