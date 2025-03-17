@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 // Define language options
@@ -39,10 +38,10 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Values
     'values.title': 'למה פישרמן?',
-    'values.protection': 'הגנה מפני ספאם',
-    'values.protection.desc': 'חסימה אוטומטית של הודעות ספאם ופרסומות',
-    'values.phishing': 'הגנה מפני פישינג',
-    'values.phishing.desc': 'זיהוי וחסימה של הודעות פישינג מתחזות',
+    'values.privacy': 'שמירה על הפרטיות',
+    'values.privacy.desc': 'לאפליקציה אין גישה לאנשי הקשר או למספר שלכם.',
+    'values.together': 'ביחד ננצח!',
+    'values.together.desc': 'אפשר לדווח על הודעות כדי לדייק את הסינון',
     'values.easy': 'קל לשימוש',
     'values.easy.desc': 'התקנה פשוטה ועבודה ברקע ללא צורך בתחזוקה',
     
@@ -65,7 +64,7 @@ const translations: Record<Language, Record<string, string>> = {
     
     // CTA
     'cta.title': 'מוכנים להיפטר מהספאם?',
-    'cta.subtitle': 'הורידו את פישרמן עכשיו והתחילו ליהנות מהודעות נקיות מספאם.',
+    'cta.subtitle': 'הורדו את פישרמן עכשיו והתחילו ליהנות מהודעות נקיות מספאם.',
     'cta.button': 'הורד עכשיו',
     
     // FAQ
@@ -77,7 +76,7 @@ const translations: Record<Language, Record<string, string>> = {
     'faq3.question': 'האם האפליקציה זמינה ב-Android?',
     'faq3.answer': 'האפליקציה זמינה כרגע ל-iOS בלבד, גרסת Android בפיתוח.',
     'faq4.question': 'כיצד האפליקציה מזהה הודעות ספאם ופישינג?',
-    'faq4.answer': 'האפליקציה משתמשת באלגוריתם מתקדם שמזהה מאפיינים של הודעות ספאם ופישינג.',
+    'faq4.answer': 'האפליקציה משתמשת באלגוריתם מתקדם שמזהה מאפיינים של הודעות ס��אם ופישינג.',
     
     // Footer
     'footer.privacy': 'מדיניות פרטיות',
@@ -94,6 +93,9 @@ const translations: Record<Language, Record<string, string>> = {
     'modal.submit': 'שלח',
     'modal.success': 'תודה! נעדכן אותך כשהאפליקציה תהיה זמינה.',
     'modal.close': 'סגור',
+    
+    // Brands
+    'brands.asSeenIn': 'כפי שנראה ב',
   },
   en: {
     // Navigation
@@ -120,10 +122,10 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Values
     'values.title': 'Why Fisherman?',
-    'values.protection': 'Spam Protection',
-    'values.protection.desc': 'Automatic blocking of spam and advertisement messages',
-    'values.phishing': 'Phishing Protection',
-    'values.phishing.desc': 'Identify and block fraudulent phishing messages',
+    'values.privacy': 'Privacy Protection',
+    'values.privacy.desc': 'The app has no access to your contacts or phone number.',
+    'values.together': 'Together We Win!',
+    'values.together.desc': 'You can report messages to improve filtering accuracy',
     'values.easy': 'Easy to Use',
     'values.easy.desc': 'Simple setup and background operation without maintenance',
     
@@ -175,6 +177,9 @@ const translations: Record<Language, Record<string, string>> = {
     'modal.submit': 'Submit',
     'modal.success': 'Thank you! We\'ll update you when the app is available.',
     'modal.close': 'Close',
+    
+    // Brands
+    'brands.asSeenIn': 'As Seen In',
   },
 };
 

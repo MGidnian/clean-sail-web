@@ -70,10 +70,36 @@ export const MessageCarousel = () => {
       text: "שלום, הבחנו בכניסה חשודה לחשבון MAX שלך.\nנא לאמת את פרטיך, אחרת הכרטיס שלך ייחסם:\nmax-finance.ly/login",
       hasLink: true
     },
+    // Additional messages
+    {
+      id: 11,
+      text: "התראה מבנק לאומי: זיהינו ניסיון גישה חריג לחשבון שלך. נא לאמת את זהותך:\nleumi-verify.co/auth",
+      hasLink: true
+    },
+    {
+      id: 12,
+      text: "משרד הבריאות: חשיפה אפשרית לקורונה. לבדיקת פרטים והנחיות:\nhttps://health-il.net/corona",
+      hasLink: true
+    },
+    {
+      id: 13,
+      text: "הישג מדהים🏆\nמנוי שלנו הרוויח 5432₪ ב-30 דקות!\nלהצטרפות לקבוצת המסחר:\ntelegram.cm/trading",
+      hasLink: true
+    },
+    {
+      id: 14,
+      text: "הודעה מהוט מובייל: חבילת הגלישה שלך עומדת להסתיים. לחידוש: \nhot-mobile.net/renew",
+      hasLink: true
+    },
+    {
+      id: 15,
+      text: "Amazon: משלוח #IL5729 ממתין בהתראת מכס. לשחרור חבילה שלם 13₪:\namazon-ship.co/customs",
+      hasLink: true
+    },
   ];
 
-  // Use autoplay carousel hook with slower interval (7 seconds) for a steadier movement
-  const { setApi, handleMouseEnter, handleMouseLeave } = useAutoplayCarousel(7000);
+  // Use autoplay carousel hook with slower interval (10 seconds) for a steadier movement
+  const { setApi, handleMouseEnter, handleMouseLeave } = useAutoplayCarousel(10000);
 
   // Log event to Clarity when carousel interacted with
   const handleCarouselInteraction = () => {
@@ -109,16 +135,16 @@ export const MessageCarousel = () => {
             className="w-full"
             setApi={setApi}
           >
-            <CarouselContent className={`gap-6 ${isRtl ? '-mr-6' : '-ml-6'}`}>
+            <CarouselContent className={`gap-8 ${isRtl ? '-mr-8' : '-ml-8'}`}>
               {messages.map(message => (
-                <CarouselItem key={message.id} className="md:basis-1/3 lg:basis-1/4 min-w-[260px]">
+                <CarouselItem key={message.id} className="md:basis-1/3 lg:basis-1/4 min-w-[280px]">
                   <div 
-                    className="message-wrapper h-full px-1"
+                    className="message-wrapper h-full px-2"
                     dir={isRtl ? "rtl" : "ltr"}
                   >
                     {/* iOS Message Bubble */}
-                    <div className="message-bubble bg-gray-200 rounded-2xl p-3 h-full min-h-[120px] max-w-[240px] mx-auto">
-                      <p className="text-black text-right text-sm whitespace-pre-line break-words">
+                    <div className="message-bubble bg-gray-200 rounded-2xl p-4 h-full min-h-[120px] max-w-[260px] mx-auto">
+                      <p className="text-black text-right text-sm whitespace-pre-line break-words overflow-hidden">
                         {message.hasLink ? (
                           <>
                             {message.text.split(/https?:\/\/\S+|[a-z0-9-]+\.[a-z]{2,}\/[a-zA-Z0-9-]+/).map((part, i, arr) => {

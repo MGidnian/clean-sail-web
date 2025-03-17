@@ -89,11 +89,9 @@ export const Navbar = () => {
               onClick={handleLanguageToggle} 
               className="p-2 rounded-full hover:bg-gray-100 transition-colors"
             >
-              <img 
-                src={language === 'he' ? "/public/flags/il.svg" : "/public/flags/us.svg"} 
-                alt={language === 'he' ? "עברית" : "English"} 
-                className="h-5 w-5"
-              />
+              <span className="text-lg">
+                {language === 'he' ? "🇮🇱" : "🇺🇸"}
+              </span>
             </button>
             
             {/* Download Button */}
@@ -112,11 +110,9 @@ export const Navbar = () => {
               onClick={handleLanguageToggle} 
               className="p-2 rounded-full hover:bg-gray-100 transition-colors"
             >
-              <img 
-                src={language === 'he' ? "/public/flags/il.svg" : "/public/flags/us.svg"} 
-                alt={language === 'he' ? "עברית" : "English"} 
-                className="h-5 w-5"
-              />
+              <span className="text-lg">
+                {language === 'he' ? "🇮🇱" : "🇺🇸"}
+              </span>
             </button>
             
             <button onClick={toggleMenu} className="text-gray-700">
