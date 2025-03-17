@@ -9,8 +9,8 @@ export const CtaSection = () => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   const handleAppStoreClick = () => {
-    // Open App Store link
-    window.open('https://apps.apple.com/app/fisherman/id123456789', '_blank');
+    // Open App Store link with UTM parameters
+    window.open('https://apps.apple.com/app/fisherman/id123456789?utm_source=website&utm_medium=cta_section&utm_campaign=download_button', '_blank');
     
     // Log event to Clarity
     if (window.clarity) {

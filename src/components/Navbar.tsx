@@ -42,6 +42,16 @@ export const Navbar = () => {
     }
   };
 
+  const handleDownloadClick = () => {
+    // Open App Store link with UTM parameters
+    window.open('https://apps.apple.com/app/fisherman/id123456789?utm_source=website&utm_medium=navbar&utm_campaign=direct_download', '_blank');
+    
+    // Log event to Clarity
+    if (window.clarity) {
+      window.clarity("event", "navbar_download_click");
+    }
+  };
+
   return (
     <nav 
       className={`fixed top-0 w-full z-50 py-4 transition-all duration-300 ${
@@ -97,7 +107,7 @@ export const Navbar = () => {
             {/* Download Button */}
             <Button 
               className="bg-fisherman-blue hover:bg-fisherman-darkBlue text-white rounded-full px-6"
-              onClick={() => handleMenuItemClick('download')}
+              onClick={handleDownloadClick}
             >
               {t('nav.download')}
             </Button>
@@ -159,7 +169,7 @@ export const Navbar = () => {
             <Button 
               className="bg-fisherman-blue hover:bg-fisherman-darkBlue text-white rounded-full"
               onClick={() => {
-                handleMenuItemClick('download');
+                handleDownloadClick();
                 toggleMenu();
               }}
             >

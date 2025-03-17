@@ -49,10 +49,12 @@ export const Counter = () => {
         </div>
         
         <div className="counter-display bg-white rounded-lg p-6 border border-gray-100 shadow-sm max-w-lg mx-auto flex justify-center items-center">
-          <ShieldCheck className="w-24 h-24 text-fisherman-blue mr-4 flex-shrink-0" />
-          <span className="text-4xl md:text-6xl font-mono font-bold text-fisherman-blue flex items-center">
+          <div className="min-w-[96px] flex justify-center">
+            <ShieldCheck className="w-20 h-20 text-fisherman-blue flex-shrink-0" />
+          </div>
+          <span className="text-4xl md:text-6xl font-mono font-bold text-fisherman-blue flex items-center overflow-hidden">
             <span className="mr-1">+</span>
-            {Math.floor(count).toLocaleString()}
+            <span className="truncate">{Math.floor(count).toLocaleString()}</span>
           </span>
         </div>
       </div>

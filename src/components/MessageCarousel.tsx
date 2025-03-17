@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { 
   Carousel,
@@ -73,6 +73,15 @@ export const MessageCarousel = () => {
     }
   };
 
+  // Add tracking for specific messages viewed
+  useEffect(() => {
+    if (window.clarity) {
+      window.clarity("event", "message_carousel_viewed", {
+        language: isRtl ? "he" : "en"
+      });
+    }
+  }, [isRtl]);
+
   return (
     <section id="control" className="py-16 bg-fisherman-gray">
       <div className="container mx-auto px-4 md:px-6">
@@ -103,10 +112,7 @@ export const MessageCarousel = () => {
             <CarouselContent className={`gap-6 ${isRtl ? '-mr-6' : '-ml-6'}`}>
               {messages.map(message => (
                 <CarouselItem key={message.id} className="basis-full md:basis-1/2 lg:basis-1/3 pl-6 pr-6">
-                  <div 
-                    className="message-wrapper h-full px-4"
-                    dir="rtl"
-                  >
+                  <div className="message-wrapper h-full px-4" dir="rtl">
                     {/* iOS Message Bubble with proper styling */}
                     <div className="ios-message-bubble bg-gray-200 rounded-2xl p-4 max-w-[280px] mx-auto">
                       <p className="text-black text-sm whitespace-pre-line break-words">
