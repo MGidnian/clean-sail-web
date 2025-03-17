@@ -18,9 +18,9 @@ interface Message {
 export const MessageCarousel = () => {
   const { t, isRtl } = useLanguage();
   
-  // Combined spam and phishing messages
+  // Create a better selection of 8 messages for the carousel
   const messages: Message[] = [
-    // Spam messages
+    // Spam/phishing messages with clear examples
     {
       id: 1,
       text: "שחקן פוקר! 15% בונוס היום!\nבוא לשחק איתנו אומהה והולדם\nבקלאב הכי פעיל בישראל\nhttps://did.li/pokerKatz",
@@ -28,78 +28,43 @@ export const MessageCarousel = () => {
     },
     {
       id: 2,
-      text: "מה המצווה שלך?💖\n1 נר שבת\n2 תפילין\n3 שמע ישראל\n4 שבת",
-    },
-    {
-      id: 3,
-      text: "סמים שקיות רפואי🍀\nמתנות למצטרפים לערוץ החדש🎁😍\nhttps://bif.ly/zUfiSxU",
-      hasLink: true
-    },
-    {
-      id: 4,
-      text: "במידה ויש לך החזר מס לשנת 2018 הוא עלול להימחק.\nאל תפספסו את הכספים שלכם.\nלבדיקה הירשמו\nhttps://taxstealingz.com/",
-      hasLink: true
-    },
-    {
-      id: 5,
-      text: "לקראת הבחירות, במי תבחרו?\n1 ליכוד\n2 העבודה\n3 גנץ",
-    },
-    // Phishing messages
-    {
-      id: 6,
       text: "חשבון Bit שלך ננעל עבור סיבות אבטחה.\nאנו מזהים את כניסה ממכשיר לא ידוע,\nאנא אמת זהותך, אחרת החשבון שלך יושבת\nhttps://ln.run/fmxJ7",
       hasLink: true
     },
     {
-      id: 7,
+      id: 3,
       text: "היי, מחברת Cal, זיהינו פעילות חשודה בכרטיס שלך.\nאם לא תאמת את עצמך בקרוב, הכרטיס שלך יופסק.\nln.run/POX8",
       hasLink: true
     },
     {
-      id: 8,
+      id: 4,
       text: "החבילה שלך ממתינה למשלוח\nיש דמי מכס/מסים שעליך לשלם על המשלוח.\nהסכום הוא 21.19₪\nhttps://did.li/rgKz",
       hasLink: true
     },
     {
-      id: 9,
-      text: "חשבון אפליקציית Yellow שלך ננעל זמנית לצורכי אבטחה.\nנא לאמת את זהותך בהקדם כדי למנוע השבתת החשבון:\ngo-yellow.br/Security",
+      id: 5,
+      text: "סמים שקיות רפואי🍀\nמתנות למצטרפים לערוץ החדש🎁😍\nhttps://bif.ly/zUfiSxU",
       hasLink: true
     },
     {
-      id: 10,
-      text: "שלום, הבחנו בכניסה חשודה לחשבון MAX שלך.\nנא לאמת את פרטיך, אחרת הכרטיס שלך ייחסם:\nmax-finance.ly/login",
+      id: 6,
+      text: "Amazon: משלוח #IL5729 ממתין בהתראת מכס. לשחרור חבילה שלם 13₪:\namazon-ship.co/customs",
       hasLink: true
     },
-    // Additional messages
     {
-      id: 11,
+      id: 7,
       text: "התראה מבנק לאומי: זיהינו ניסיון גישה חריג לחשבון שלך. נא לאמת את זהותך:\nleumi-verify.co/auth",
       hasLink: true
     },
     {
-      id: 12,
-      text: "משרד הבריאות: חשיפה אפשרית לקורונה. לבדיקת פרטים והנחיות:\nhttps://health-il.net/corona",
-      hasLink: true
-    },
-    {
-      id: 13,
-      text: "הישג מדהים🏆\nמנוי שלנו הרוויח 5432₪ ב-30 דקות!\nלהצטרפות לקבוצת המסחר:\ntelegram.cm/trading",
-      hasLink: true
-    },
-    {
-      id: 14,
-      text: "הודעה מהוט מובייל: חבילת הגלישה שלך עומדת להסתיים. לחידוש: \nhot-mobile.net/renew",
-      hasLink: true
-    },
-    {
-      id: 15,
-      text: "Amazon: משלוח #IL5729 ממתין בהתראת מכס. לשחרור חבילה שלם 13₪:\namazon-ship.co/customs",
+      id: 8,
+      text: "במידה ויש לך החזר מס לשנת 2018 הוא עלול להימחק.\nאל תפספסו את הכספים שלכם.\nלבדיקה הירשמו\nhttps://taxstealingz.com/",
       hasLink: true
     },
   ];
 
-  // Use autoplay carousel hook with slower interval (10 seconds) for a steadier movement
-  const { setApi, handleMouseEnter, handleMouseLeave } = useAutoplayCarousel(10000);
+  // Use a slower interval (12 seconds) for smoother movement and better viewing
+  const { setApi, handleMouseEnter, handleMouseLeave } = useAutoplayCarousel(12000);
 
   // Log event to Clarity when carousel interacted with
   const handleCarouselInteraction = () => {
@@ -121,7 +86,7 @@ export const MessageCarousel = () => {
         </div>
         
         <div 
-          className="message-carousel-container max-w-5xl mx-auto overflow-hidden"
+          className="max-w-5xl mx-auto overflow-hidden px-4"
           onClick={handleCarouselInteraction}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
@@ -130,21 +95,21 @@ export const MessageCarousel = () => {
             opts={{
               align: "start",
               loop: true,
-              dragFree: false,
+              dragFree: true,
             }}
             className="w-full"
             setApi={setApi}
           >
-            <CarouselContent className={`gap-8 ${isRtl ? '-mr-8' : '-ml-8'}`}>
+            <CarouselContent className={`gap-6 ${isRtl ? '-mr-6' : '-ml-6'}`}>
               {messages.map(message => (
-                <CarouselItem key={message.id} className="md:basis-1/3 lg:basis-1/4 min-w-[280px]">
+                <CarouselItem key={message.id} className="basis-full md:basis-1/2 lg:basis-1/3 pl-6 pr-6">
                   <div 
-                    className="message-wrapper h-full px-2"
-                    dir={isRtl ? "rtl" : "ltr"}
+                    className="message-wrapper h-full px-4"
+                    dir="rtl"
                   >
-                    {/* iOS Message Bubble */}
-                    <div className="message-bubble bg-gray-200 rounded-2xl p-4 h-full min-h-[120px] max-w-[260px] mx-auto">
-                      <p className="text-black text-right text-sm whitespace-pre-line break-words overflow-hidden">
+                    {/* iOS Message Bubble with proper styling */}
+                    <div className="ios-message-bubble bg-gray-200 rounded-2xl p-4 max-w-[280px] mx-auto">
+                      <p className="text-black text-sm whitespace-pre-line break-words">
                         {message.hasLink ? (
                           <>
                             {message.text.split(/https?:\/\/\S+|[a-z0-9-]+\.[a-z]{2,}\/[a-zA-Z0-9-]+/).map((part, i, arr) => {

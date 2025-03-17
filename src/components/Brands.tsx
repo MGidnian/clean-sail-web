@@ -6,7 +6,7 @@ export const Brands = () => {
   const { t } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Log brand carousel view to Clarity
+  // Log brand section view to Clarity
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {

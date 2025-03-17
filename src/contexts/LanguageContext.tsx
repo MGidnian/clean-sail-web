@@ -43,7 +43,7 @@ const translations: Record<Language, Record<string, string>> = {
     'values.together': 'ביחד ננצח!',
     'values.together.desc': 'אפשר לדווח על הודעות כדי לדייק את הסינון',
     'values.easy': 'קל לשימוש',
-    'values.easy.desc': 'התקנה פשוטה ועבודה ברקע ללא צורך בתחזוקה',
+    'values.easy.desc': 'פועל אוטונטמי לחלוטין, מתקינים למשפחה ומגינים עליהם ללא מאמץ',
     
     // Reviews
     'reviews.title': 'דירוגים וביקורות',

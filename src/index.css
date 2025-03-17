@@ -132,21 +132,25 @@
     max-height: 500px;
   }
   
-  /* iOS Message Styles */
-  .message-bubble {
+  /* Improved iOS Message Styles */
+  .ios-message-bubble {
     position: relative;
     border-radius: 18px;
-    width: 240px;
-    min-height: 120px;
+    width: 100%;
+    min-height: 80px;
     margin-left: auto;
-    padding: 10px 12px;
+    padding: 12px 14px;
     background-color: #e9e9eb;
     color: #000;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     text-align: right;
     direction: rtl;
-    font-size: 0.875rem;
-    height: auto;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    height: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
   }
   
   .message-time {
@@ -167,34 +171,17 @@
   }
   
   /* Message carousel improvements */
-  .message-carousel-container {
-    padding: 20px 0;
-    position: relative;
-    width: 100%;
-    max-width: 1024px;
+  .message-wrapper {
+    padding: 10px;
+    min-height: 150px;
+    display: flex;
+    align-items: stretch;
   }
-  
-  .message-carousel-container:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 80px;
-    background: linear-gradient(to right, rgba(248, 249, 250, 0), rgba(248, 249, 250, 1));
-    z-index: 2;
-    pointer-events: none;
-  }
-  
-  .message-carousel-container:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 80px;
-    background: linear-gradient(to left, rgba(248, 249, 250, 0), rgba(248, 249, 250, 1));
-    z-index: 2;
-    pointer-events: none;
+
+  /* Added to ensure messages don't overlap */
+  .embla__slide {
+    flex: 0 0 auto;
+    min-width: 0;
+    max-width: 100%;
   }
 }
