@@ -62,15 +62,14 @@ export const Counter = () => {
       <div className="container mx-auto px-4 md:px-6 text-center">
         <div className="flex items-center justify-center mb-8 text-white">
           <h2 className="text-2xl md:text-3xl font-bold flex items-center">
-            <ShieldCheck className="w-8 h-8 md:w-10 md:h-10 mr-2 text-white" />
+            <ShieldCheck className="w-10 h-10 md:w-12 md:h-12 mr-2 text-white" />
             {t('counter.title')}
           </h2>
         </div>
         
         <div className="counter-display bg-white rounded-lg p-6 border border-gray-100 shadow-sm max-w-lg mx-auto flex justify-center items-center">
           <span className={`${getCounterFontSize()} font-mono font-bold text-fisherman-blue flex items-center overflow-x-auto overflow-y-hidden no-scrollbar`}>
-            <span className="mr-1">+</span>
-            <span>{Math.floor(count).toLocaleString()}</span>
+            {Math.floor(count).toLocaleString()}
           </span>
         </div>
       </div>

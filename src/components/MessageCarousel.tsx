@@ -7,6 +7,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { useAutoplayCarousel } from '@/lib/use-autoplay-carousel';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 // Define message data structure
 interface Message {
@@ -17,6 +18,7 @@ interface Message {
 
 export const MessageCarousel = () => {
   const { t, isRtl } = useLanguage();
+  const isMobile = useIsMobile();
   
   // Create a better selection of 8 messages for the carousel
   const messages: Message[] = [
@@ -63,8 +65,9 @@ export const MessageCarousel = () => {
     },
   ];
 
-  // Use a faster interval (8 seconds) for quicker movement
-  const { setApi, handleMouseEnter, handleMouseLeave } = useAutoplayCarousel(8000);
+  // Use a faster interval on mobile (2.67 seconds - 3x faster than the previous 8000ms)
+  const autoplaySpeed = isMobile ? 2667 : 8000;
+  const { setApi, handleMouseEnter, handleMouseLeave } = useAutoplayCarousel(autoplaySpeed);
 
   // Log event to Clarity when carousel interacted with
   const handleCarouselInteraction = () => {

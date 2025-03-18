@@ -18,47 +18,69 @@ interface Review {
   date: string;
   author: string;
   text: string;
+  title?: string;
 }
 
 export const Reviews = () => {
   const { t, isRtl } = useLanguage();
   
-  // Review data
+  // Updated review data
   const reviews: Review[] = [
     {
       id: 1,
       rating: 5,
-      date: '26.12.2024',
-      author: 'shavitcba',
-      text: 'Great app\nLove this app! It\'s super easy to use, has great onboarding, and I really appreciate that it filters messages without needing access to my contacts. I even installed it on my parents\' phones.'
+      date: '12.03.2025',
+      author: 'מר אייל',
+      title: 'מומלץ',
+      text: 'אפליקציה מעולה שעושה בדיוק את מה שהיא מיועדת לעשות. עוצרת הודעות sms מיותרות, יודעת להפריד בין הודעה לגיטימית לפרסומת למשל פנגו. אם פרסומת ההודעה תעבור לזבל אם הודעה לגיטימית מפנגו עבור תשלום תכנס ליעד. בקיצור נח ומומלץ וכמובן כחול לבן'
     },
     {
       id: 2,
       rating: 5,
-      date: '05.09.2023',
-      author: 'JayCee.10',
-      text: 'Easy installation and very helpful!!\nInstalled in a minute without any issues. This app is very helpful to filter unwanted/unsolicited messages and saves a lot of time and attention! Especially for non-hebrew speakers living in Israel, it is a MUST!!'
+      date: '26.01.2025',
+      author: 'Coruja213',
+      title: 'כלי מדהים שמסנן המון רעש',
+      text: 'אפליקציה ממש נוחה ופשוטה שפשוט מקלה על החיים. במקום לקבל את כל ה״זבל״ זה פשוט מנקה את זה עבורך לתיקיה יעודית. לי אישית זה שומר על השפיות. המון תודה!'
     },
     {
       id: 3,
       rating: 5,
-      date: '25.12.2024',
-      author: 'Locutus44002.3',
-      text: 'Locutus\nThis is the best SMS filtering app I\'ve used! It\'s incredibly easy to set up and use that makes managing messages even more intuitive. Highly recommended for anyone looking for efficient and user-friendly SMS filtering!"'
+      date: '07.01.2025',
+      author: 'Gutia111',
+      title: 'סינון מעולה',
+      text: 'שאפו לחבר׳ה שהחליטו לשים סוף להודעות הספאם הבלתי פוסקות! שיניתם לי את החיים וכל ההתראות מהפוליטיקה ירדו ⭐️⭐️⭐️⭐️⭐️'
     },
     {
       id: 4,
       rating: 5,
-      date: '10.11.2023',
-      author: 'TechUser123',
-      text: 'Perfect solution for spam\nI was getting bombarded with spam messages daily until I found this app. Now my message inbox is clean and organized. The app is lightweight and doesn\'t drain my battery.'
+      date: '02.01.2025',
+      author: 'נתן בר',
+      title: 'עובד פצצה',
+      text: 'לקח לי חצי דקה בהתחלה להבין איך מפעילים את החסימה האוטומטית. מהרגע הזה השתנו לי החיים, הפסקתי לקבל ספאם וזבל לחלוטין. ממליץ'
     },
     {
       id: 5,
       rating: 5,
-      date: '03.01.2024',
-      author: 'MobileExpert',
-      text: 'Works exactly as advertised\nThis app delivers on its promise. It catches all the spam and phishing attempts while ensuring I never miss important messages. The interface is clean and modern too.'
+      date: '05.08.2024',
+      author: 'Roy_gold-nyc',
+      title: 'בדיוק מה שהייתי צריך!!',
+      text: 'פשוט נמאס לי לקבל הודעות לטלפון משירותים שבחיים לא נרשמתי אליהם. מסיבות, הלוואות וכל מיני דברים בעייתיים - פשוט חלאס. זה עצר את כל ההודעות האלה 👍🏻'
+    },
+    {
+      id: 6,
+      rating: 5,
+      date: '2 years ago',
+      author: 'Tommy_Zr',
+      title: 'Works like MAGIC 🪄',
+      text: 'From the moment I installed it - NO MORE JUNK SMS!! one of the most useful app I have. A must have for anyone 👌'
+    },
+    {
+      id: 7,
+      rating: 5,
+      date: '2 years ago',
+      author: 'ZoungiCo',
+      title: 'סוף סוף הודעות סמס בלי ספאם',
+      text: 'בזכות האפליקציה הזאת חזרתי להשתמש בהודעות סמס לטובת דברים חשובים כמו קביעת תורים, משלוחים וכו׳. כל הודעות הספאם שהיו נכנסים היום באופן אוטומטי לתיקיית ׳זבל׳, ולא צריך לסנן כלום ידנית. ממליץ בחום!'
     }
   ];
 
@@ -129,6 +151,7 @@ export const Reviews = () => {
                       <div className="flex">{renderStars(review.rating)}</div>
                       <div className="text-sm text-gray-500">{review.date}</div>
                     </div>
+                    {review.title && <div className="mb-2 font-bold">{review.title}</div>}
                     <div className="mb-2 font-semibold">{review.author}</div>
                     <p className="text-gray-700 text-sm whitespace-pre-line">{review.text}</p>
                   </div>

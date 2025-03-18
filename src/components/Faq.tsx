@@ -6,23 +6,56 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 // Define FAQ data structure
 interface FaqItem {
   id: number;
-  key: string;
+  question: string;
+  answer: string;
 }
 
 export const Faq = () => {
   const { t } = useLanguage();
   const [activeItem, setActiveItem] = useState<number | null>(null);
   
-  // FAQ data with corresponding translation keys
+  // Updated FAQ data with direct questions/answers
   const faqItems: FaqItem[] = [
-    { id: 1, key: 'faq1' },
-    { id: 2, key: 'faq2' },
-    { id: 3, key: 'faq3' },
-    { id: 4, key: 'faq4' },
-    { id: 5, key: 'faq5' },
-    { id: 6, key: 'faq6' },
-    { id: 7, key: 'faq7' },
-    { id: 8, key: 'faq8' }
+    { 
+      id: 1, 
+      question: 'איזה סוגי הודעות SMS פישרמן מסנן?',
+      answer: '1. פישינג - הודעות זדוניות המתחזות לתקשורת לגיטימית מעסקים (למשל דואר ישראל, ביט, DHL, UPS)\n2. ספאם - הודעות שנשלחות ללא תוכן ובעלי ערך נמוך (למשל ספאם בחירות, תזכורות לשבת, הצעות לסמים)\n3. פרסומות - הודעות קידום מכירות'
+    },
+    { 
+      id: 2, 
+      question: 'מה קורה כאשר הודעה מסוננת?',
+      answer: 'ברגע שאתה מפעיל את פישרמן, תיקיית ספאם חדשה מתווספת לאפליקציית ההודעות שלך. כל ההודעות המסוננות יהיו זמינות שם. הסינונים מתעדכנים אוטומטית.'
+    },
+    { 
+      id: 3, 
+      question: 'איך פישרמן חוסם הודעות פישינג?',
+      answer: 'כל הודעה שמתקבלת נסרקת ומאותתים רבים מופקים, כולל מילות מפתח וקישורים מההודעה. קישורים לא ידועים נשלחים למנוע זיהוי לסיווג האם הם הונאה (מעמידים פנים כעסק אחר לגניבת המידע שלך).\nבנוסף, טקסט ההודעה נסרק לחיפוש מילות מפתח של ספאם ופרסומות.'
+    },
+    { 
+      id: 4, 
+      question: 'האם פישרמן בחינם לשימוש?',
+      answer: 'כן, פישרמן זמין בחינם לכל המשתמשים.'
+    },
+    { 
+      id: 5, 
+      question: 'מה קורה אם פישרמן חוסם הודעה לגיטימית?',
+      answer: 'פישרמן משתמש במסננים מתקדמים עם אחוז נמוך מאוד של תוצאות שגויות. עם זאת, תמיד תוכל לראות הודעות חסומות בתיקיית דואר הזבל.'
+    },
+    { 
+      id: 6, 
+      question: 'האם האפליקציה צופה בהודעות שלי?',
+      answer: 'לא, האפליקציה אינה צופה בתוכן ההודעות ואינה שולחת מידע לשרתים חיצוניים.'
+    },
+    { 
+      id: 7, 
+      question: 'האם האפליקציה זמינה ב-Android?',
+      answer: 'האפליקציה זמינה כרגע ל-iOS בלבד, גרסת Android בפיתוח.'
+    },
+    { 
+      id: 8, 
+      question: 'האם האפליקציה פועלת גם ללא חיבור לאינטרנט?',
+      answer: 'כן, הסינון מתבצע על המכשיר עצמו ואינו דורש חיבור לאינטרנט.'
+    }
   ];
   
   const toggleItem = (id: number) => {
@@ -55,7 +88,7 @@ export const Faq = () => {
                 onClick={() => toggleItem(item.id)}
               >
                 <h3 className="text-xl font-medium">
-                  {t(`${item.key}.question`)}
+                  {item.question}
                 </h3>
                 
                 <button className="text-fisherman-blue p-2">
@@ -65,11 +98,11 @@ export const Faq = () => {
               
               <div 
                 className={`transition-all duration-300 overflow-hidden ${
-                  activeItem === item.id ? 'max-h-40' : 'max-h-0'
+                  activeItem === item.id ? 'max-h-96' : 'max-h-0'
                 }`}
               >
-                <p className="py-4 text-gray-600">
-                  {t(`${item.key}.answer`)}
+                <p className="py-4 text-gray-600 whitespace-pre-line">
+                  {item.answer}
                 </p>
               </div>
             </div>

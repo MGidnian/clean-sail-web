@@ -42,7 +42,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'reviews.outOf': 'מתוך 5',
     
     // Features
-    'features.title': 'תכונות',
+    'features.title': 'לוקחים חזרה את השליטה',
     'feature1.title': 'תיקיית זבל',
     'feature1.desc': 'תיקיית זבל בה יופיעו כל ההודעות שייחסמו.',
     'feature2.title': 'חסימת ספאם ופרסומות',
@@ -81,8 +81,8 @@ export const translations: Record<Language, Record<string, string>> = {
     'faq10.answer': 'כרגע האפליקציה תומכת בעברית ואנגלית, בקרוב נוסיף שפות נוספות.',
     'faq11.question': 'האם האפליקציה מסננת הודעות WhatsApp?',
     'faq11.answer': 'לא, כרגע האפליקציה מסננת רק הודעות SMS. תמיכה בפלטפורמות נוספות נמצאת בתכנון.',
-    'faq12.question': 'כמה זמן לוקח להתקין את האפליקציה?',
-    'faq12.answer': 'ההתקנה אורכת פחות מדקה, והאפליקציה מתחילה לסנן הודעות מיד לאחר ההתקנה.',
+    'faq12.question': 'האם האפליקציה צורכת הרבה סוללה?',
+    'faq12.answer': 'לא, האפליקציה תוכננה לצרוך מעט מאוד משאבים ולא תשפיע על ביצועי המכשיר או על חיי הסוללה.',
     
     // Footer
     'footer.privacy': 'מדיניות פרטיות',
@@ -142,7 +142,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'reviews.outOf': 'out of 5',
     
     // Features
-    'features.title': 'Features',
+    'features.title': 'Take Back Control',
     'feature1.title': 'Spam Folder',
     'feature1.desc': 'A spam folder where all blocked messages will appear.',
     'feature2.title': 'Spam & Ad Blocking',
