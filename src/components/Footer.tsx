@@ -1,10 +1,11 @@
 
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Instagram, Facebook, Mail, MessageSquare } from 'lucide-react';
+import { Instagram, Facebook, Mail, MessageSquare, Linkedin } from 'lucide-react';
 
 export const Footer = () => {
   const { t } = useLanguage();
+  const currentYear = new Date().getFullYear();
   
   // Log social media or link click to Clarity
   const handleLinkClick = (linkType: string, linkName: string) => {
@@ -33,14 +34,14 @@ export const Footer = () => {
           
           <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 mb-6 md:mb-0">
             <a 
-              href="#" 
+              href="/privacy" 
               className="hover:text-blue-300 transition-colors"
               onClick={() => handleLinkClick('page', 'privacy')}
             >
               {t('footer.privacy')}
             </a>
             <a 
-              href="#" 
+              href="/terms" 
               className="hover:text-blue-300 transition-colors"
               onClick={() => handleLinkClick('page', 'terms')}
             >
@@ -68,13 +69,9 @@ export const Footer = () => {
               className="hover:text-blue-300 transition-colors p-2"
               onClick={() => handleLinkClick('social', 'x')}
             >
+              {/* X.com (formerly Twitter) icon */}
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 4L10.77 13.38" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M3 20L13.5 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M15 4H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M14 20L21 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M18 4V8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M17.5 16V20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"/>
               </svg>
             </a>
             <a 
@@ -83,6 +80,13 @@ export const Footer = () => {
               onClick={() => handleLinkClick('social', 'facebook')}
             >
               <Facebook size={20} />
+            </a>
+            <a 
+              href="#" 
+              className="hover:text-blue-300 transition-colors p-2"
+              onClick={() => handleLinkClick('social', 'linkedin')}
+            >
+              <Linkedin size={20} />
             </a>
             <a 
               href="#" 
@@ -102,7 +106,7 @@ export const Footer = () => {
         </div>
         
         <div className="mt-8 text-center text-gray-400 text-sm">
-          {t('footer.copyright')}
+          © {currentYear} {t('footer.copyright').replace('2024', currentYear.toString())}
         </div>
       </div>
     </footer>

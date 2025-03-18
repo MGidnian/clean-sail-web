@@ -47,7 +47,7 @@ export const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center">
             <span className="text-xl font-bold text-fisherman-blue">
-              Fisherman
+              {language === 'he' ? 'פישרמן' : 'Fisherman'}
             </span>
           </div>
           
@@ -63,17 +63,13 @@ export const Navbar = () => {
               {t('nav.contact')}
             </a>
             
-            {/* Language Toggle */}
+            {/* Language Toggle with Flag Emojis */}
             <button
               onClick={toggleLanguage}
               className="flex items-center"
               aria-label="Toggle language"
             >
-              <img 
-                src={`/public/flags/${language === 'he' ? 'il' : 'us'}.svg`} 
-                alt={language === 'he' ? 'Hebrew' : 'English'} 
-                className="w-6 h-6"
-              />
+              {language === 'he' ? '🇮🇱' : '🇺🇸'}
             </button>
             
             {/* Download Button */}
@@ -87,17 +83,13 @@ export const Navbar = () => {
           
           {/* Mobile Navigation */}
           <div className="md:hidden flex items-center space-x-4">
-            {/* Language Toggle */}
+            {/* Language Toggle with Flag Emojis */}
             <button
               onClick={toggleLanguage}
-              className="flex items-center"
+              className="flex items-center text-xl"
               aria-label="Toggle language"
             >
-              <img 
-                src={`/public/flags/${language === 'he' ? 'il' : 'us'}.svg`} 
-                alt={language === 'he' ? 'Hebrew' : 'English'} 
-                className="w-6 h-6"
-              />
+              {language === 'he' ? '🇮🇱' : '🇺🇸'}
             </button>
             
             {/* Mobile Menu Button */}

@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { GooglePlayModal } from './GooglePlayModal';
 
 export const Hero = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   const handleAppStoreClick = () => {
@@ -34,14 +34,17 @@ export const Hero = () => {
         <div className="flex flex-col md:flex-row items-center">
           {/* Text Content */}
           <div className="w-full md:w-1/2 mb-8 md:mb-0 text-center md:text-start">
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
-              {t('hero.title')}
+            <h1 className="text-4xl md:text-6xl font-bold mb-2 text-fisherman-blue">
+              {language === 'he' ? 'פישרמן' : 'Fisherman'}
             </h1>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+              {t('hero.title')}
+            </h2>
             <p className="text-lg md:text-xl text-gray-600 mb-8">
               {t('hero.subtitle')}
             </p>
             
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
               {/* App Store Button */}
               <button 
                 onClick={handleAppStoreClick}

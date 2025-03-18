@@ -18,8 +18,8 @@ const Index = () => {
     <LanguageProvider>
       <Layout>
         <Hero />
-        <Counter />
         <Brands />
+        <Counter />
         <MessageCarousel />
         <Features />
         <DownloadButtons />

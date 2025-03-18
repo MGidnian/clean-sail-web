@@ -63,8 +63,8 @@ export const MessageCarousel = () => {
     },
   ];
 
-  // Use a slower interval (12 seconds) for smoother movement
-  const { setApi, handleMouseEnter, handleMouseLeave } = useAutoplayCarousel(12000);
+  // Use a faster interval (8 seconds) for quicker movement
+  const { setApi, handleMouseEnter, handleMouseLeave } = useAutoplayCarousel(8000);
 
   // Log event to Clarity when carousel interacted with
   const handleCarouselInteraction = () => {

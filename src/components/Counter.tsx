@@ -41,38 +41,34 @@ export const Counter = () => {
     return () => clearInterval(interval);
   }, []);
   
-  // Determine shield size based on count length and mobile status
-  const getShieldSize = () => {
+  // Determine counter font size based on count length and mobile status
+  const getCounterFontSize = () => {
     const countLength = Math.floor(count).toString().length;
     
     if (isMobile) {
-      return "w-16 h-16"; // 4rem for mobile
+      if (countLength > 10) return "text-2xl";
+      if (countLength > 8) return "text-3xl";
+      return "text-4xl";
     }
     
-    // For desktop, adjust based on count length
-    if (countLength > 10) {
-      return "w-14 h-14";
-    } else if (countLength > 8) {
-      return "w-16 h-16";
-    } else {
-      return "w-20 h-20";
-    }
+    // For desktop
+    if (countLength > 10) return "text-4xl";
+    if (countLength > 8) return "text-5xl";
+    return "text-6xl";
   };
   
   return (
     <section className="py-16 bg-fisherman-blue">
       <div className="container mx-auto px-4 md:px-6 text-center">
         <div className="flex items-center justify-center mb-8 text-white">
-          <h2 className="text-2xl md:text-3xl font-bold">
+          <h2 className="text-2xl md:text-3xl font-bold flex items-center">
+            <ShieldCheck className="w-8 h-8 md:w-10 md:h-10 mr-2 text-white" />
             {t('counter.title')}
           </h2>
         </div>
         
         <div className="counter-display bg-white rounded-lg p-6 border border-gray-100 shadow-sm max-w-lg mx-auto flex justify-center items-center">
-          <div className="flex justify-center">
-            <ShieldCheck className={`${getShieldSize()} text-fisherman-blue flex-shrink-0`} />
-          </div>
-          <span className="text-4xl md:text-6xl font-mono font-bold text-fisherman-blue flex items-center whitespace-nowrap overflow-x-auto overflow-y-hidden no-scrollbar">
+          <span className={`${getCounterFontSize()} font-mono font-bold text-fisherman-blue flex items-center overflow-x-auto overflow-y-hidden no-scrollbar`}>
             <span className="mr-1">+</span>
             <span>{Math.floor(count).toLocaleString()}</span>
           </span>
