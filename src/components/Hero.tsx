@@ -1,35 +1,32 @@
-
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { GooglePlayModal } from './GooglePlayModal';
-
 export const Hero = () => {
-  const { t, language } = useLanguage();
+  const {
+    t,
+    language
+  } = useLanguage();
   const [isModalOpen, setIsModalOpen] = React.useState(false);
-
   const handleAppStoreClick = () => {
     // Open App Store link
     window.open('https://apps.apple.com/app/fisherman/id123456789?utm_source=website&utm_medium=hero_section&utm_campaign=top_button', '_blank');
-    
+
     // Log event to Clarity
     if (window.clarity) {
       window.clarity("event", "app_store_click");
     }
   };
-
   const handleGooglePlayClick = () => {
     // Open modal instead of Play Store
     setIsModalOpen(true);
-    
+
     // Log event to Clarity
     if (window.clarity) {
       window.clarity("event", "google_play_click");
     }
   };
-
-  return (
-    <section className="pt-24 pb-12 md:pt-32 md:pb-24 bg-gradient-to-b from-white to-fisherman-gray">
+  return <section className="pt-24 pb-12 md:pt-32 md:pb-24 bg-gradient-to-b from-white to-fisherman-gray">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row items-center">
           {/* Text Content */}
@@ -44,29 +41,15 @@ export const Hero = () => {
               {t('hero.subtitle')}
             </p>
             
-            <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+            <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4 px-[77px]">
               {/* App Store Button */}
-              <button 
-                onClick={handleAppStoreClick}
-                className="transition-transform hover:scale-105 focus:outline-none"
-              >
-                <img 
-                  src="/public/lovable-uploads/8a714a89-15bd-41d0-a803-d8146614d336.png" 
-                  alt="Download on the App Store" 
-                  className="h-14 w-auto"
-                />
+              <button onClick={handleAppStoreClick} className="transition-transform hover:scale-105 focus:outline-none">
+                <img src="/public/lovable-uploads/8a714a89-15bd-41d0-a803-d8146614d336.png" alt="Download on the App Store" className="h-14 w-auto" />
               </button>
               
               {/* Google Play Button */}
-              <button 
-                onClick={handleGooglePlayClick}
-                className="transition-transform hover:scale-105 focus:outline-none"
-              >
-                <img 
-                  src="/public/lovable-uploads/b5740ab3-4fdc-4b42-8513-67264cf236c6.png" 
-                  alt="Get it on Google Play" 
-                  className="h-14 w-auto"
-                />
+              <button onClick={handleGooglePlayClick} className="transition-transform hover:scale-105 focus:outline-none">
+                <img src="/public/lovable-uploads/b5740ab3-4fdc-4b42-8513-67264cf236c6.png" alt="Get it on Google Play" className="h-14 w-auto" />
               </button>
             </div>
           </div>
@@ -74,21 +57,13 @@ export const Hero = () => {
           {/* App Screenshot */}
           <div className="w-full md:w-1/2 flex justify-center md:justify-end">
             <div className="relative">
-              <img 
-                src="/public/lovable-uploads/556d17c9-2794-4145-bbc1-3c9e92b190e4.png" 
-                alt="iPhone with Fisherman App" 
-                className="w-auto h-[500px] object-contain animate-fade-in"
-              />
+              <img src="/public/lovable-uploads/556d17c9-2794-4145-bbc1-3c9e92b190e4.png" alt="iPhone with Fisherman App" className="w-auto h-[500px] object-contain animate-fade-in" />
             </div>
           </div>
         </div>
       </div>
       
       {/* Google Play Modal */}
-      <GooglePlayModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
-    </section>
-  );
+      <GooglePlayModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </section>;
 };
