@@ -1,165 +1,137 @@
 
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { useMobile } from '@/hooks/use-mobile';
+import { X, Menu } from 'lucide-react';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 export const Navbar = () => {
-  const { t, toggleLanguage, language, isRtl } = useLanguage();
-  const [isOpen, setIsOpen] = useState(false);
-  const isMobile = useMobile();
+  const { t, language, toggleLanguage, isRtl } = useLanguage();
+  const [scrolled, setScrolled] = useState(false);
+  const isMobile = useIsMobile();
   
-  // Close mobile menu when switching to desktop
-  useEffect(() => {
-    if (!isMobile && isOpen) {
-      setIsOpen(false);
-    }
-  }, [isMobile, isOpen]);
-  
-  // Handle language toggle and log to Clarity
-  const handleLanguageToggle = () => {
-    toggleLanguage();
-  };
-  
-  // Handle download button click - direct to App Store
-  const handleDownloadClick = () => {
+  const handleAppStoreClick = () => {
+    // Open App Store link
     window.open('https://apps.apple.com/app/fisherman/id123456789?utm_source=website&utm_medium=navbar&utm_campaign=download_button', '_blank');
     
     // Log event to Clarity
     if (window.clarity) {
-      window.clarity("event", "navbar_download_click");
+      window.clarity("event", "navbar_app_store_click");
     }
+  };
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
     
-    // Close mobile menu if open
-    if (isOpen) {
-      setIsOpen(false);
-    }
-  };
-  
-  // Get language emoji
-  const getLanguageEmoji = () => {
-    return language === 'he' ? '🇮🇱' : '🇺🇸';
-  };
-  
-  // Handle scroll to section
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-      
-      // Log event to Clarity
-      if (window.clarity) {
-        window.clarity("event", "navbar_section_click", {
-          section: sectionId
-        });
-      }
-      
-      // Close mobile menu if open
-      if (isOpen) {
-        setIsOpen(false);
-      }
-    }
-  };
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+    <nav 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+      }`}
+    >
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center">
-            <img 
-              src="/public/lovable-uploads/cd6dbc8b-e617-4255-9828-6242b468cee5.png" 
-              alt="Fisherman Logo" 
-              className="h-8 w-auto" 
-            />
-            <span className="text-lg font-bold ml-2">Fisherman</span>
-          </a>
+          <div className="flex items-center">
+            <span className="text-xl font-bold text-fisherman-blue">
+              Fisherman
+            </span>
+          </div>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <button 
-              onClick={() => scrollToSection('features')}
-              className="text-gray-700 hover:text-fisherman-blue"
-            >
+            <a href="#features" className="text-gray-600 hover:text-fisherman-blue transition-colors">
               {t('nav.features')}
-            </button>
-            <button 
-              onClick={() => scrollToSection('reviews')}
-              className="text-gray-700 hover:text-fisherman-blue"
-            >
+            </a>
+            <a href="#reviews" className="text-gray-600 hover:text-fisherman-blue transition-colors">
               {t('nav.reviews')}
-            </button>
-            <button 
-              onClick={() => scrollToSection('faq')}
-              className="text-gray-700 hover:text-fisherman-blue"
-            >
+            </a>
+            <a href="#contact" className="text-gray-600 hover:text-fisherman-blue transition-colors">
               {t('nav.contact')}
-            </button>
-          </div>
-          
-          {/* Action Buttons */}
-          <div className="flex items-center">
+            </a>
+            
             {/* Language Toggle */}
-            <button 
-              className="mr-4 text-lg"
-              onClick={handleLanguageToggle}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center"
               aria-label="Toggle language"
             >
-              {getLanguageEmoji()}
+              <img 
+                src={`/public/flags/${language === 'he' ? 'il' : 'us'}.svg`} 
+                alt={language === 'he' ? 'Hebrew' : 'English'} 
+                className="w-6 h-6"
+              />
             </button>
             
             {/* Download Button */}
-            <Button 
-              onClick={handleDownloadClick}
-              className="hidden md:block bg-fisherman-blue hover:bg-fisherman-darkBlue"
+            <button
+              onClick={handleAppStoreClick}
+              className="bg-fisherman-blue text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
             >
               {t('nav.download')}
-            </Button>
+            </button>
+          </div>
+          
+          {/* Mobile Navigation */}
+          <div className="md:hidden flex items-center space-x-4">
+            {/* Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center"
+              aria-label="Toggle language"
+            >
+              <img 
+                src={`/public/flags/${language === 'he' ? 'il' : 'us'}.svg`} 
+                alt={language === 'he' ? 'Hebrew' : 'English'} 
+                className="w-6 h-6"
+              />
+            </button>
             
             {/* Mobile Menu Button */}
-            <button 
-              className="md:hidden ml-4 p-2"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            <Sheet>
+              <SheetTrigger asChild>
+                <button className="text-gray-600">
+                  <Menu size={24} />
+                </button>
+              </SheetTrigger>
+              <SheetContent side={isRtl ? "right" : "left"}>
+                <div className="flex flex-col space-y-4 mt-8" dir={isRtl ? 'rtl' : 'ltr'}>
+                  <a href="#features" className="text-gray-600 hover:text-fisherman-blue transition-colors">
+                    {t('nav.features')}
+                  </a>
+                  <a href="#reviews" className="text-gray-600 hover:text-fisherman-blue transition-colors">
+                    {t('nav.reviews')}
+                  </a>
+                  <a href="#contact" className="text-gray-600 hover:text-fisherman-blue transition-colors">
+                    {t('nav.contact')}
+                  </a>
+                  
+                  {/* Download Button */}
+                  <button
+                    onClick={handleAppStoreClick}
+                    className="bg-fisherman-blue text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors w-full"
+                  >
+                    {t('nav.download')}
+                  </button>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </div>
-      
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-white px-4 pt-2 pb-4 border-t border-gray-100">
-          <div className="flex flex-col space-y-3">
-            <button 
-              onClick={() => scrollToSection('features')}
-              className="text-gray-700 hover:text-fisherman-blue py-2"
-            >
-              {t('nav.features')}
-            </button>
-            <button 
-              onClick={() => scrollToSection('reviews')}
-              className="text-gray-700 hover:text-fisherman-blue py-2"
-            >
-              {t('nav.reviews')}
-            </button>
-            <button 
-              onClick={() => scrollToSection('faq')}
-              className="text-gray-700 hover:text-fisherman-blue py-2"
-            >
-              {t('nav.contact')}
-            </button>
-            <Button 
-              onClick={handleDownloadClick}
-              className="w-full bg-fisherman-blue hover:bg-fisherman-darkBlue mt-2"
-            >
-              {t('nav.download')}
-            </Button>
-          </div>
-        </div>
-      )}
     </nav>
   );
 };

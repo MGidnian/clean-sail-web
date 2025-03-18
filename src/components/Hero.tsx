@@ -10,7 +10,7 @@ export const Hero = () => {
 
   const handleAppStoreClick = () => {
     // Open App Store link
-    window.open('https://apps.apple.com/app/fisherman/id123456789', '_blank');
+    window.open('https://apps.apple.com/app/fisherman/id123456789?utm_source=website&utm_medium=hero_section&utm_campaign=top_button', '_blank');
     
     // Log event to Clarity
     if (window.clarity) {
@@ -72,7 +72,7 @@ export const Hero = () => {
           <div className="w-full md:w-1/2 flex justify-center md:justify-end">
             <div className="relative">
               <img 
-                src="/public/lovable-uploads/c9b77f11-2cd4-4c5d-a6e2-2adf8aec9ebf.png" 
+                src="/public/lovable-uploads/556d17c9-2794-4145-bbc1-3c9e92b190e4.png" 
                 alt="iPhone with Fisherman App" 
                 className="w-auto h-[500px] object-contain animate-fade-in"
               />

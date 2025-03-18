@@ -2,10 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ShieldCheck } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 export const Counter = () => {
   const { t } = useLanguage();
   const [count, setCount] = useState(0);
+  const isMobile = useIsMobile();
   
   useEffect(() => {
     // Start date: March 1st, 2025
@@ -39,6 +41,24 @@ export const Counter = () => {
     return () => clearInterval(interval);
   }, []);
   
+  // Determine shield size based on count length and mobile status
+  const getShieldSize = () => {
+    const countLength = Math.floor(count).toString().length;
+    
+    if (isMobile) {
+      return "w-16 h-16"; // 4rem for mobile
+    }
+    
+    // For desktop, adjust based on count length
+    if (countLength > 10) {
+      return "w-14 h-14";
+    } else if (countLength > 8) {
+      return "w-16 h-16";
+    } else {
+      return "w-20 h-20";
+    }
+  };
+  
   return (
     <section className="py-16 bg-fisherman-blue">
       <div className="container mx-auto px-4 md:px-6 text-center">
@@ -49,12 +69,12 @@ export const Counter = () => {
         </div>
         
         <div className="counter-display bg-white rounded-lg p-6 border border-gray-100 shadow-sm max-w-lg mx-auto flex justify-center items-center">
-          <div className="min-w-[96px] flex justify-center">
-            <ShieldCheck className="w-16 h-16 md:w-20 md:h-20 text-fisherman-blue flex-shrink-0" />
+          <div className="flex justify-center">
+            <ShieldCheck className={`${getShieldSize()} text-fisherman-blue flex-shrink-0`} />
           </div>
-          <span className="text-4xl md:text-6xl font-mono font-bold text-fisherman-blue flex items-center overflow-hidden">
+          <span className="text-4xl md:text-6xl font-mono font-bold text-fisherman-blue flex items-center whitespace-nowrap overflow-x-auto overflow-y-hidden no-scrollbar">
             <span className="mr-1">+</span>
-            <span className="truncate">{Math.floor(count).toLocaleString()}</span>
+            <span>{Math.floor(count).toLocaleString()}</span>
           </span>
         </div>
       </div>

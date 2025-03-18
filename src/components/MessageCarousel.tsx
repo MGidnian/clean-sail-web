@@ -63,7 +63,7 @@ export const MessageCarousel = () => {
     },
   ];
 
-  // Use a slower interval (12 seconds) for smoother movement and better viewing
+  // Use a slower interval (12 seconds) for smoother movement
   const { setApi, handleMouseEnter, handleMouseLeave } = useAutoplayCarousel(12000);
 
   // Log event to Clarity when carousel interacted with
@@ -108,8 +108,9 @@ export const MessageCarousel = () => {
             }}
             className="w-full"
             setApi={setApi}
+            dir="ltr" // Always use LTR for carousel itself
           >
-            <CarouselContent className={`gap-6 ${isRtl ? '-mr-6' : '-ml-6'}`}>
+            <CarouselContent className="-ml-6">
               {messages.map(message => (
                 <CarouselItem key={message.id} className="basis-full md:basis-1/2 lg:basis-1/3 pl-6 pr-6">
                   <div className="message-wrapper h-full px-4" dir="rtl">
@@ -119,6 +120,9 @@ export const MessageCarousel = () => {
                         {message.hasLink ? (
                           <>
                             {message.text.split(/https?:\/\/\S+|[a-z0-9-]+\.[a-z]{2,}\/[a-zA-Z0-9-]+/).map((part, i, arr) => {
+                              // Only add the part if it's not empty
+                              if (!part) return null;
+                              
                               if (i === arr.length - 1) return part;
                               
                               const match = message.text.substring(
