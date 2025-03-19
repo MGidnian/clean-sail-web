@@ -27,7 +27,7 @@ export const Footer = () => {
           </div>
           
           <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 mb-6 md:mb-0">
-            <a href="/privacy" onClick={() => handleLinkClick('page', 'privacy')} className="hover:text-blue-300 transition-colors px-[24px]">
+            <a href="/privacy" onClick={() => handleLinkClick('page', 'privacy')} className="hover:text-blue-300 transition-colors mx-0 px-[8px]">
               {t('footer.privacy')}
             </a>
             <a href="/terms" className="hover:text-blue-300 transition-colors" onClick={() => handleLinkClick('page', 'terms')}>
