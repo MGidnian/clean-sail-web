@@ -1,71 +1,78 @@
 
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { GooglePlayModal } from './GooglePlayModal';
+import { Apple, BadgeAlert } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { useGooglePlayModal } from '@/hooks/use-modal';
 
-export const DownloadButtons: React.FC = () => {
+export const DownloadButtons = () => {
   const { t } = useLanguage();
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-
+  const { openModal } = useGooglePlayModal();
+  
   const handleAppStoreClick = () => {
-    // Open App Store link with UTM parameters
+    // Open App Store link
     window.open('https://apps.apple.com/app/fisherman/id123456789?utm_source=website&utm_medium=download_section&utm_campaign=download_button', '_blank');
     
     // Log event to Clarity
     if (window.clarity) {
-      window.clarity("event", "download_section_app_store_click");
+      window.clarity("event", "app_store_click", {
+        location: "download_section"
+      });
     }
   };
-
-  const handleGooglePlayClick = () => {
-    // Open modal instead of Play Store
-    setIsModalOpen(true);
+  
+  const handlePlayStoreClick = () => {
+    openModal();
     
     // Log event to Clarity
     if (window.clarity) {
-      window.clarity("event", "download_section_google_play_click");
+      window.clarity("event", "play_store_waitlist_click", {
+        location: "download_section"
+      });
     }
   };
-
+  
   return (
-    <section className="py-10 bg-white">
-      <div className="container mx-auto px-4 md:px-6">
-        <h2 className="text-xl md:text-2xl font-bold text-center mb-6">
-          הורידו עכשיו ותוך פחות מ-30 שניות תשכחו מהספאם
+    <section className="py-16 bg-fisherman-gray">
+      <div className="container mx-auto px-4 md:px-6 text-center">
+        <h2 className="text-2xl md:text-3xl font-bold mb-8">
+          {t('download.title')}
         </h2>
         
-        <div className="flex justify-center gap-4">
+        <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-6">
           {/* App Store Button */}
-          <button 
+          <Button 
             onClick={handleAppStoreClick}
-            className="transition-transform hover:scale-105 focus:outline-none"
+            variant="default" 
+            size="lg"
+            className="bg-black hover:bg-gray-800 text-white w-full md:w-auto"
           >
-            <img 
-              src="/public/lovable-uploads/8a714a89-15bd-41d0-a803-d8146614d336.png" 
-              alt="Download on the App Store" 
-              className="h-14 w-auto"
-            />
-          </button>
+            <div className="flex items-center">
+              <Apple className="mr-2 h-5 w-5" />
+              <div className="flex flex-col items-start">
+                <span className="text-xs">Download on the</span>
+                <span className="text-base font-bold">App Store</span>
+              </div>
+            </div>
+          </Button>
           
-          {/* Google Play Button */}
-          <button 
-            onClick={handleGooglePlayClick}
-            className="transition-transform hover:scale-105 focus:outline-none"
+          {/* Google Play Button (Waitlist) */}
+          <Button 
+            onClick={handlePlayStoreClick}
+            variant="outline" 
+            size="lg"
+            className="bg-white border-gray-300 text-gray-700 hover:bg-gray-100 w-full md:w-auto"
           >
-            <img 
-              src="/public/lovable-uploads/b5740ab3-4fdc-4b42-8513-67264cf236c6.png" 
-              alt="Get it on Google Play" 
-              className="h-14 w-auto"
-            />
-          </button>
+            <div className="flex items-center">
+              <BadgeAlert className="mr-2 h-5 w-5" />
+              <div className="flex flex-col items-start">
+                <span className="text-xs">Coming soon to</span>
+                <span className="text-base font-bold">Google Play</span>
+              </div>
+            </div>
+          </Button>
         </div>
       </div>
-      
-      {/* Google Play Modal */}
-      <GooglePlayModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
     </section>
   );
 };

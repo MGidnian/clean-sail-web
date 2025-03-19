@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { X, Menu, ShieldCheck } from 'lucide-react';
+import { X, Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -46,7 +46,11 @@ export const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <ShieldCheck className="w-6 h-6 mr-2 text-fisherman-blue rounded-md" />
+            <img 
+              src="/lovable-uploads/cd6dbc8b-e617-4255-9828-6242b468cee5.png" 
+              alt="Fisherman Logo" 
+              className="w-6 h-6 md:w-8 md:h-8 mr-2 rounded-md"
+            />
             <span className="text-xl font-bold text-fisherman-blue">
               {language === 'he' ? 'פישרמן' : 'Fisherman'}
             </span>
@@ -64,14 +68,23 @@ export const Navbar = () => {
               {t('nav.contact')}
             </a>
             
-            {/* Language Toggle with Flag Emojis */}
-            <button
-              onClick={toggleLanguage}
-              className="flex items-center"
-              aria-label="Toggle language"
-            >
-              {language === 'he' ? '🇮🇱' : '🇺🇸'}
-            </button>
+            {/* Language Toggle with Flags */}
+            <div className="flex items-center bg-gray-100 rounded-full p-1">
+              <button
+                onClick={language === 'en' ? undefined : toggleLanguage}
+                className={`flex items-center p-1 rounded-full ${language === 'en' ? 'bg-white shadow-sm' : ''}`}
+                aria-label="Switch to English"
+              >
+                <img src="/flags/us.svg" alt="English" className="w-6 h-6 rounded-full" />
+              </button>
+              <button
+                onClick={language === 'he' ? undefined : toggleLanguage}
+                className={`flex items-center p-1 rounded-full ${language === 'he' ? 'bg-white shadow-sm' : ''}`}
+                aria-label="Switch to Hebrew"
+              >
+                <img src="/flags/il.svg" alt="Hebrew" className="w-6 h-6 rounded-full" />
+              </button>
+            </div>
             
             {/* Download Button */}
             <button
@@ -84,14 +97,23 @@ export const Navbar = () => {
           
           {/* Mobile Navigation */}
           <div className="md:hidden flex items-center space-x-4">
-            {/* Language Toggle with Flag Emojis */}
-            <button
-              onClick={toggleLanguage}
-              className="flex items-center text-xl"
-              aria-label="Toggle language"
-            >
-              {language === 'he' ? '🇮🇱' : '🇺🇸'}
-            </button>
+            {/* Language Toggle with Flags for Mobile */}
+            <div className="flex items-center bg-gray-100 rounded-full p-1">
+              <button
+                onClick={language === 'en' ? undefined : toggleLanguage}
+                className={`flex items-center p-1 rounded-full ${language === 'en' ? 'bg-white shadow-sm' : ''}`}
+                aria-label="Switch to English"
+              >
+                <img src="/flags/us.svg" alt="English" className="w-5 h-5 rounded-full" />
+              </button>
+              <button
+                onClick={language === 'he' ? undefined : toggleLanguage}
+                className={`flex items-center p-1 rounded-full ${language === 'he' ? 'bg-white shadow-sm' : ''}`}
+                aria-label="Switch to Hebrew"
+              >
+                <img src="/flags/il.svg" alt="Hebrew" className="w-5 h-5 rounded-full" />
+              </button>
+            </div>
             
             {/* Mobile Menu Button */}
             <Sheet>

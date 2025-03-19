@@ -14,14 +14,8 @@ interface Feature {
 export const Features = () => {
   const { t } = useLanguage();
   
-  // Feature data with corresponding translation keys
+  // Feature data with updated ordering
   const features: Feature[] = [
-    {
-      id: 1,
-      icon: Trash2,
-      color: 'bg-blue-100 text-blue-600',
-      key: 'feature1'
-    },
     {
       id: 2,
       icon: ShieldAlert,
@@ -33,6 +27,12 @@ export const Features = () => {
       icon: Bell,
       color: 'bg-purple-100 text-purple-600',
       key: 'feature3'
+    },
+    {
+      id: 1,
+      icon: Trash2,
+      color: 'bg-blue-100 text-blue-600',
+      key: 'feature1'
     },
     {
       id: 4,

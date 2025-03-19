@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { ShieldCheck } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 export const Counter = () => {
@@ -66,7 +65,11 @@ export const Counter = () => {
       <div className="container mx-auto px-4 md:px-6 text-center">
         <div className="flex items-center justify-center mb-8 text-white">
           <h2 className="text-2xl md:text-3xl font-bold flex items-center">
-            <ShieldCheck className="w-12 h-12 md:w-16 md:h-16 mr-2 text-white" />
+            <img 
+              src="/lovable-uploads/cd6dbc8b-e617-4255-9828-6242b468cee5.png" 
+              alt="Fisherman Logo" 
+              className="w-12 h-12 md:w-16 md:h-16 mr-2 rounded-md"
+            />
             {t('counter.title')}
           </h2>
         </div>

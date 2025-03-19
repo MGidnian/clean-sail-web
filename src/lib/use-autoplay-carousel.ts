@@ -1,76 +1,26 @@
 
-import { useState, useEffect, useRef } from 'react';
-import { type CarouselApi } from '@/components/ui/carousel';
+import { useEffect } from "react";
+import { useCarousel } from "@/components/ui/carousel";
+import { useIsMobile } from "@/hooks/use-mobile";
 
-export function useAutoplayCarousel(interval = 3000, shouldAutoPlay = true) {
-  const [api, setApi] = useState<CarouselApi>();
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const isRtlRef = useRef<boolean>(document.documentElement.dir === 'rtl');
-
+export function useAutoplayCarousel(apiRef: ReturnType<typeof useCarousel>, intervalMs = 2000) {
+  const isMobile = useIsMobile();
+  
+  // Use a faster interval for desktop (half the time)
+  const desktopInterval = intervalMs / 2;
+  
   useEffect(() => {
-    // Update RTL reference when DOM changes
-    const observer = new MutationObserver(() => {
-      isRtlRef.current = document.documentElement.dir === 'rtl';
-    });
-    
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['dir']
-    });
-    
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!api || !shouldAutoPlay) return;
-
-    // Clear any existing interval
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
+    const api = apiRef.current;
+    if (!api || api.count <= 1) {
+      return;
     }
 
-    // Set up autoplay with consistent timing
-    const startAutoplay = () => {
-      intervalRef.current = setInterval(() => {
-        api.scrollNext();
-      }, interval);
-    };
-
-    // Start autoplay
-    startAutoplay();
-
-    // Cleanup on unmount
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [api, interval, shouldAutoPlay]);
-
-  // Pause autoplay on hover/touch
-  const handleMouseEnter = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-  };
-
-  // Resume autoplay when not hovering
-  const handleMouseLeave = () => {
-    if (!api || !shouldAutoPlay) return;
-    
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-    }
-    
-    intervalRef.current = setInterval(() => {
+    // Set the autoplay interval
+    const interval = setInterval(() => {
       api.scrollNext();
-    }, interval);
-  };
+    }, isMobile ? intervalMs : desktopInterval);
 
-  return {
-    setApi,
-    handleMouseEnter,
-    handleMouseLeave,
-  };
+    // Clear the interval when component unmounts
+    return () => clearInterval(interval);
+  }, [apiRef, intervalMs, isMobile, desktopInterval]);
 }

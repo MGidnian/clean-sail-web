@@ -5,7 +5,7 @@ import { Language } from '@/contexts/LanguageContext';
 export const translations: Record<Language, Record<string, string>> = {
   he: {
     // Navigation
-    'nav.features': 'לוקחים חזרה את השליטה',
+    'nav.features': 'איך זה עובד?',
     'nav.reviews': 'ביקורות',
     'nav.contact': 'צור קשר',
     'nav.download': 'הורד עכשיו',
@@ -42,7 +42,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'reviews.outOf': 'מתוך 5',
     
     // Features
-    'features.title': 'לוקחים חזרה את השליטה',
+    'features.title': 'איך זה עובד?',
     'feature1.title': 'תיקיית זבל',
     'feature1.desc': 'תיקיית זבל בה יופיעו כל ההודעות שייחסמו.',
     'feature2.title': 'חסימת ספאם ופרסומות',
@@ -51,6 +51,9 @@ export const translations: Record<Language, Record<string, string>> = {
     'feature3.desc': 'חסימה אוטומטית של הודעות מתחזות לדואר ישראל, כרטיסי אשראי, פנגו וכו\'.',
     'feature4.title': 'עדכונים אוטומטיים',
     'feature4.desc': 'אחרי הפעלה, פישרמן עובד בשקט ברקע ללא תחזוקה.',
+    
+    // Download Section
+    'download.title': 'הורידו עכשיו ותוך פחות מ-30 שניות תשכחו מהספאם',
     
     // CTA
     'cta.title': 'מוכנים להיפטר מהספאם?',
@@ -81,7 +84,7 @@ export const translations: Record<Language, Record<string, string>> = {
   },
   en: {
     // Navigation
-    'nav.features': 'Take Back Control',
+    'nav.features': 'How it Works',
     'nav.reviews': 'Reviews',
     'nav.contact': 'Contact',
     'nav.download': 'Download Now',
@@ -118,7 +121,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'reviews.outOf': 'out of 5',
     
     // Features
-    'features.title': 'Take Back Control',
+    'features.title': 'How it Works',
     'feature1.title': 'Spam Folder',
     'feature1.desc': 'A spam folder where all blocked messages will appear.',
     'feature2.title': 'Spam & Ad Blocking',
@@ -127,6 +130,9 @@ export const translations: Record<Language, Record<string, string>> = {
     'feature3.desc': 'Automatic blocking of messages impersonating Israel Post, credit cards, Pango, and more.',
     'feature4.title': 'Automatic Updates',
     'feature4.desc': 'After activation, Fisherman works quietly in the background with no maintenance required.',
+    
+    // Download Section
+    'download.title': 'Download now and forget about spam in less than 30 seconds',
     
     // CTA
     'cta.title': 'Ready to get rid of spam?',
