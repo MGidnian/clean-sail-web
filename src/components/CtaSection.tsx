@@ -10,7 +10,7 @@ export const CtaSection = () => {
   
   const handleAppStoreClick = () => {
     // Open App Store link with UTM parameters
-    window.open('https://apps.apple.com/app/fisherman/id123456789?utm_source=website&utm_medium=cta_section&utm_campaign=download_button', '_blank');
+    window.open('https://apps.apple.com/il/app/fisherman-sms-filtering/id6449192504?utm_source=website&utm_medium=cta_section&utm_campaign=download_button', '_blank');
 
     // Log event to Clarity
     if (window.clarity) {
