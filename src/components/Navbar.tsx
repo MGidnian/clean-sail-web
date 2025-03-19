@@ -40,7 +40,7 @@ export const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center">
             <img src="/lovable-uploads/cd6dbc8b-e617-4255-9828-6242b468cee5.png" alt="Fisherman Logo" className="w-6 h-6 md:w-8 md:h-8 mr-2 rounded-md" />
-            <span className="text-xl font-bold text-fisherman-blue">
+            <span className="text-xl font-bold text-fisherman-blue px-[4px]">
               {language === 'he' ? 'פישרמן' : 'Fisherman'}
             </span>
           </div>
