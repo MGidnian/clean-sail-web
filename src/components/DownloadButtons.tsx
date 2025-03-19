@@ -30,6 +30,10 @@ export const DownloadButtons: React.FC = () => {
   return (
     <section className="py-10 bg-white">
       <div className="container mx-auto px-4 md:px-6">
+        <h2 className="text-xl md:text-2xl font-bold text-center mb-6">
+          הורידו עכשיו ותוך פחות מ-30 שניות תשכחו מהספאם
+        </h2>
+        
         <div className="flex justify-center gap-4">
           {/* App Store Button */}
           <button 

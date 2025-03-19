@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { X, Menu } from 'lucide-react';
+import { X, Menu, ShieldCheck } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -46,6 +46,7 @@ export const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
+            <ShieldCheck className="w-6 h-6 mr-2 text-fisherman-blue rounded-md" />
             <span className="text-xl font-bold text-fisherman-blue">
               {language === 'he' ? 'פישרמן' : 'Fisherman'}
             </span>

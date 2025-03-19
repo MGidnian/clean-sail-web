@@ -13,14 +13,18 @@ export const Counter = () => {
     // Start date: March 1st, 2025
     const startDate = new Date('2025-03-01T00:00:00Z');
     const startCount = 10000000; // 10 million messages on start date
-    const messagesPerDay = 20000; // 20,000 messages per day
-    
-    // Calculate messages per millisecond
-    const messagesPerMs = messagesPerDay / (24 * 60 * 60 * 1000);
     
     // Calculate initial count based on time elapsed since start date
     const calculateCount = () => {
       const now = new Date();
+      const currentHour = now.getHours();
+      
+      // Dynamic rate: 20,000 messages per day during peak hours (8am-10pm), 4,000 during off-hours
+      const messagesPerDay = (currentHour >= 8 && currentHour < 22) ? 20000 : 4000;
+      
+      // Calculate messages per millisecond
+      const messagesPerMs = messagesPerDay / (24 * 60 * 60 * 1000);
+      
       const elapsedMs = now.getTime() - startDate.getTime();
       return startCount + (elapsedMs > 0 ? elapsedMs * messagesPerMs : 0);
     };
@@ -62,7 +66,7 @@ export const Counter = () => {
       <div className="container mx-auto px-4 md:px-6 text-center">
         <div className="flex items-center justify-center mb-8 text-white">
           <h2 className="text-2xl md:text-3xl font-bold flex items-center">
-            <ShieldCheck className="w-10 h-10 md:w-12 md:h-12 mr-2 text-white" />
+            <ShieldCheck className="w-12 h-12 md:w-16 md:h-16 mr-2 text-white" />
             {t('counter.title')}
           </h2>
         </div>

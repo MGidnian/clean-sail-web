@@ -65,8 +65,8 @@ export const MessageCarousel = () => {
     },
   ];
 
-  // Use a faster interval on mobile (2.67 seconds - 3x faster than the previous 8000ms)
-  const autoplaySpeed = isMobile ? 2667 : 8000;
+  // Make carousel 3x faster on mobile and 2x faster on desktop
+  const autoplaySpeed = isMobile ? 2667 : 4000; // 2667ms for mobile, 4000ms for desktop (half of 8000ms)
   const { setApi, handleMouseEnter, handleMouseLeave } = useAutoplayCarousel(autoplaySpeed);
 
   // Log event to Clarity when carousel interacted with

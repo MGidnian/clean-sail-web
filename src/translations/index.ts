@@ -5,7 +5,7 @@ import { Language } from '@/contexts/LanguageContext';
 export const translations: Record<Language, Record<string, string>> = {
   he: {
     // Navigation
-    'nav.features': 'תכונות',
+    'nav.features': 'לוקחים חזרה את השליטה',
     'nav.reviews': 'ביקורות',
     'nav.contact': 'צור קשר',
     'nav.download': 'הורד עכשיו',
@@ -59,30 +59,6 @@ export const translations: Record<Language, Record<string, string>> = {
     
     // FAQ
     'faq.title': 'שאלות נפוצות',
-    'faq1.question': 'האם האפליקציה פתוחה בחינם?',
-    'faq1.answer': 'כן, האפליקציה חינמית לחלוטין.',
-    'faq2.question': 'האם האפליקציה צופה בהודעות שלי?',
-    'faq2.answer': 'לא, האפליקציה אינה צופה בתוכן ההודעות ואינה שולחת מידע לשרתים חיצוניים.',
-    'faq3.question': 'האם האפליקציה זמינה ב-Android?',
-    'faq3.answer': 'האפליקציה זמינה כרגע ל-iOS בלבד, גרסת Android בפיתוח.',
-    'faq4.question': 'כיצד האפליקציה מזהה הודעות ספאם ופישינג?',
-    'faq4.answer': 'האפליקציה משתמשת באלגוריתם מתקדם שמזהה מאפיינים של הודעות ספאם ופישינג.',
-    'faq5.question': 'האם האפליקציה פועלת גם ללא חיבור לאינטרנט?',
-    'faq5.answer': 'כן, הסינון מתבצע על המכשיר עצמו ואינו דורש חיבור לאינטרנט.',
-    'faq6.question': 'האם אני יכול לשחזר הודעות שנחסמו בטעות?',
-    'faq6.answer': 'כן, כל ההודעות שנחסמות נשמרות בתיקיית הזבל ואפשר לשחזר אותן בקלות.',
-    'faq7.question': 'האם האפליקציה צורכת הרבה סוללה?',
-    'faq7.answer': 'לא, האפליקציה תוכננה לצרוך מעט מאוד משאבים ולא תשפיע על ביצועי המכשיר או על חיי הסוללה.',
-    'faq8.question': 'האם האפליקציה משתדרגת באופן אוטומטי?',
-    'faq8.answer': 'כן, האפליקציה מתעדכנת באופן אוטומטי עם דפוסי זיהוי חדשים כדי להתמודד עם איומים חדשים.',
-    'faq9.question': 'האם אפשר להשתמש באפליקציה על טאבלט?',
-    'faq9.answer': 'כן, האפליקציה תומכת בכל מכשירי iOS, כולל אייפד וטאבלטים.',
-    'faq10.question': 'האם יש תמיכה בשפות נוספות?',
-    'faq10.answer': 'כרגע האפליקציה תומכת בעברית ואנגלית, בקרוב נוסיף שפות נוספות.',
-    'faq11.question': 'האם האפליקציה מסננת הודעות WhatsApp?',
-    'faq11.answer': 'לא, כרגע האפליקציה מסננת רק הודעות SMS. תמיכה בפלטפורמות נוספות נמצאת בתכנון.',
-    'faq12.question': 'האם האפליקציה צורכת הרבה סוללה?',
-    'faq12.answer': 'לא, האפליקציה תוכננה לצרוך מעט מאוד משאבים ולא תשפיע על ביצועי המכשיר או על חיי הסוללה.',
     
     // Footer
     'footer.privacy': 'מדיניות פרטיות',
@@ -105,7 +81,7 @@ export const translations: Record<Language, Record<string, string>> = {
   },
   en: {
     // Navigation
-    'nav.features': 'Features',
+    'nav.features': 'Take Back Control',
     'nav.reviews': 'Reviews',
     'nav.contact': 'Contact',
     'nav.download': 'Download Now',
@@ -159,30 +135,6 @@ export const translations: Record<Language, Record<string, string>> = {
     
     // FAQ
     'faq.title': 'Frequently Asked Questions',
-    'faq1.question': 'Is the app free to use?',
-    'faq1.answer': 'Yes, the app is completely free.',
-    'faq2.question': 'Does the app read my messages?',
-    'faq2.answer': 'No, the app does not read the content of your messages and does not send information to external servers.',
-    'faq3.question': 'Is the app available on Android?',
-    'faq3.answer': 'The app is currently available for iOS only, Android version is in development.',
-    'faq4.question': 'How does the app identify spam and phishing messages?',
-    'faq4.answer': 'The app uses an advanced algorithm that identifies characteristics of spam and phishing messages.',
-    'faq5.question': 'Does the app work without an internet connection?',
-    'faq5.answer': 'Yes, filtering is done on the device itself and does not require an internet connection.',
-    'faq6.question': 'Can I recover messages that were blocked by mistake?',
-    'faq6.answer': 'Yes, all blocked messages are stored in the spam folder and can be easily recovered.',
-    'faq7.question': 'Does the app consume a lot of battery?',
-    'faq7.answer': 'No, the app is designed to consume very few resources and will not affect device performance or battery life.',
-    'faq8.question': 'Does the app upgrade automatically?',
-    'faq8.answer': 'Yes, the app automatically updates with new detection patterns to deal with new threats.',
-    'faq9.question': 'Can I use the app on a tablet?',
-    'faq9.answer': 'Yes, the app supports all iOS devices, including iPad and tablets.',
-    'faq10.question': 'Are there any additional language options?',
-    'faq10.answer': 'Currently the app supports Hebrew and English, more languages will be added soon.',
-    'faq11.question': 'Does the app filter WhatsApp messages?',
-    'faq11.answer': 'No, currently the app only filters SMS messages. Support for additional platforms is being planned.',
-    'faq12.question': 'How long does it take to install the app?',
-    'faq12.answer': 'Installation takes less than a minute, and the app starts filtering messages immediately after installation.',
     
     // Footer
     'footer.privacy': 'Privacy Policy',
