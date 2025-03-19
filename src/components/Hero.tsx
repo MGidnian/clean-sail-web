@@ -55,7 +55,7 @@ export const Hero = () => {
           </div>
           
           {/* App Screenshot */}
-          <div className="w-full md:w-1/2 flex justify-center md:justify-end mx-0">
+          <div className="w-full md:w-1/2 flex justify-center md:justify-center mx-0">
             <div className="relative">
               <img src="/lovable-uploads/556d17c9-2794-4145-bbc1-3c9e92b190e4.png" alt="iPhone with Fisherman App" className="w-auto h-[500px] object-contain animate-fade-in" />
             </div>
