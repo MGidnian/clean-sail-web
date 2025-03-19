@@ -22,7 +22,7 @@ export const Footer = () => {
           <div className="mb-6 md:mb-0">
             <a href="#" className="flex items-center">
               <img src="/lovable-uploads/cd6dbc8b-e617-4255-9828-6242b468cee5.png" alt="Fisherman Logo" className="h-10 w-auto rounded-md" />
-              <span className="ml-2 text-xl font-bold">Fisherman</span>
+              <span className="ml-2 text-xl font-bold mx-[4px]">פישרמן</span>
             </a>
           </div>
           
