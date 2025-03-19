@@ -39,14 +39,14 @@ export const CtaSection = () => {
           {t('cta.subtitle')}
         </p>
         
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
+        <div className="flex flex-col sm:flex-row justify-center gap-4 mx-auto">
           {/* App Store Button */}
-          <button onClick={handleAppStoreClick} className="transition-transform hover:scale-105 focus:outline-none">
+          <button onClick={handleAppStoreClick} className="transition-transform hover:scale-105 focus:outline-none mx-auto sm:mx-0">
             <img src="/lovable-uploads/8a714a89-15bd-41d0-a803-d8146614d336.png" alt="Download on the App Store" className="h-14 w-auto" />
           </button>
           
           {/* Google Play Button */}
-          <button onClick={handleGooglePlayClick} className="transition-transform hover:scale-105 focus:outline-none">
+          <button onClick={handleGooglePlayClick} className="transition-transform hover:scale-105 focus:outline-none mx-auto sm:mx-0">
             <img src="/lovable-uploads/b5740ab3-4fdc-4b42-8513-67264cf236c6.png" alt="Get it on Google Play" className="h-14 w-auto" />
           </button>
         </div>

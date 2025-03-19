@@ -1,13 +1,11 @@
 
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Apple, BadgeAlert } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { useGooglePlayModal } from '@/hooks/use-modal';
+import { GooglePlayModal } from './GooglePlayModal';
 
 export const DownloadButtons = () => {
   const { t } = useLanguage();
-  const { openModal } = useGooglePlayModal();
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
   
   const handleAppStoreClick = () => {
     // Open App Store link
@@ -22,7 +20,8 @@ export const DownloadButtons = () => {
   };
   
   const handlePlayStoreClick = () => {
-    openModal();
+    // Open modal instead of Play Store
+    setIsModalOpen(true);
     
     // Log event to Clarity
     if (window.clarity) {
@@ -39,40 +38,21 @@ export const DownloadButtons = () => {
           {t('download.title')}
         </h2>
         
-        <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-6">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
           {/* App Store Button */}
-          <Button 
-            onClick={handleAppStoreClick}
-            variant="default" 
-            size="lg"
-            className="bg-black hover:bg-gray-800 text-white w-full md:w-auto"
-          >
-            <div className="flex items-center">
-              <Apple className="mr-2 h-5 w-5" />
-              <div className="flex flex-col items-start">
-                <span className="text-xs">Download on the</span>
-                <span className="text-base font-bold">App Store</span>
-              </div>
-            </div>
-          </Button>
+          <button onClick={handleAppStoreClick} className="transition-transform hover:scale-105 focus:outline-none">
+            <img src="/lovable-uploads/8a714a89-15bd-41d0-a803-d8146614d336.png" alt="Download on the App Store" className="h-14 w-auto" />
+          </button>
           
-          {/* Google Play Button (Waitlist) */}
-          <Button 
-            onClick={handlePlayStoreClick}
-            variant="outline" 
-            size="lg"
-            className="bg-white border-gray-300 text-gray-700 hover:bg-gray-100 w-full md:w-auto"
-          >
-            <div className="flex items-center">
-              <BadgeAlert className="mr-2 h-5 w-5" />
-              <div className="flex flex-col items-start">
-                <span className="text-xs">Coming soon to</span>
-                <span className="text-base font-bold">Google Play</span>
-              </div>
-            </div>
-          </Button>
+          {/* Google Play Button */}
+          <button onClick={handlePlayStoreClick} className="transition-transform hover:scale-105 focus:outline-none">
+            <img src="/lovable-uploads/b5740ab3-4fdc-4b42-8513-67264cf236c6.png" alt="Get it on Google Play" className="h-14 w-auto" />
+          </button>
         </div>
       </div>
+      
+      {/* Google Play Modal */}
+      <GooglePlayModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };

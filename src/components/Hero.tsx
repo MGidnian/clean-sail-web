@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
@@ -41,7 +42,7 @@ export const Hero = () => {
               {t('hero.subtitle')}
             </p>
             
-            <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4 px-[77px]">
+            <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
               {/* App Store Button */}
               <button onClick={handleAppStoreClick} className="transition-transform hover:scale-105 focus:outline-none">
                 <img src="/lovable-uploads/8a714a89-15bd-41d0-a803-d8146614d336.png" alt="Download on the App Store" className="h-14 w-auto" />
