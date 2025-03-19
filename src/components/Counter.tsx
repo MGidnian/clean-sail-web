@@ -18,8 +18,8 @@ export const Counter = () => {
       const now = new Date();
       const currentHour = now.getHours();
       
-      // Dynamic rate: 20,000 messages per day during peak hours (8am-10pm), 4,000 during off-hours
-      const messagesPerDay = (currentHour >= 8 && currentHour < 22) ? 20000 : 4000;
+      // Dynamic rate: 25,000 messages per day (updated from 20,000)
+      const messagesPerDay = 25000;
       
       // Calculate messages per millisecond
       const messagesPerMs = messagesPerDay / (24 * 60 * 60 * 1000);

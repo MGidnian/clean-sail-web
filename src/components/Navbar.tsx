@@ -68,21 +68,21 @@ export const Navbar = () => {
               {t('nav.contact')}
             </a>
             
-            {/* Language Toggle with Flags */}
+            {/* Language Toggle with Emoji Flags */}
             <div className="flex items-center bg-gray-100 rounded-full p-1">
               <button
                 onClick={language === 'en' ? undefined : toggleLanguage}
-                className={`flex items-center p-1 rounded-full ${language === 'en' ? 'bg-white shadow-sm' : ''}`}
+                className={`flex items-center justify-center p-1 rounded-full w-8 h-8 text-lg ${language === 'en' ? 'bg-white shadow-sm' : ''}`}
                 aria-label="Switch to English"
               >
-                <img src="/flags/us.svg" alt="English" className="w-6 h-6 rounded-full" />
+                🇺🇸
               </button>
               <button
                 onClick={language === 'he' ? undefined : toggleLanguage}
-                className={`flex items-center p-1 rounded-full ${language === 'he' ? 'bg-white shadow-sm' : ''}`}
+                className={`flex items-center justify-center p-1 rounded-full w-8 h-8 text-lg ${language === 'he' ? 'bg-white shadow-sm' : ''}`}
                 aria-label="Switch to Hebrew"
               >
-                <img src="/flags/il.svg" alt="Hebrew" className="w-6 h-6 rounded-full" />
+                🇮🇱
               </button>
             </div>
             
@@ -97,21 +97,21 @@ export const Navbar = () => {
           
           {/* Mobile Navigation */}
           <div className="md:hidden flex items-center space-x-4">
-            {/* Language Toggle with Flags for Mobile */}
+            {/* Language Toggle with Emoji Flags for Mobile */}
             <div className="flex items-center bg-gray-100 rounded-full p-1">
               <button
                 onClick={language === 'en' ? undefined : toggleLanguage}
-                className={`flex items-center p-1 rounded-full ${language === 'en' ? 'bg-white shadow-sm' : ''}`}
+                className={`flex items-center justify-center p-1 rounded-full w-7 h-7 text-base ${language === 'en' ? 'bg-white shadow-sm' : ''}`}
                 aria-label="Switch to English"
               >
-                <img src="/flags/us.svg" alt="English" className="w-5 h-5 rounded-full" />
+                🇺🇸
               </button>
               <button
                 onClick={language === 'he' ? undefined : toggleLanguage}
-                className={`flex items-center p-1 rounded-full ${language === 'he' ? 'bg-white shadow-sm' : ''}`}
+                className={`flex items-center justify-center p-1 rounded-full w-7 h-7 text-base ${language === 'he' ? 'bg-white shadow-sm' : ''}`}
                 aria-label="Switch to Hebrew"
               >
-                <img src="/flags/il.svg" alt="Hebrew" className="w-5 h-5 rounded-full" />
+                🇮🇱
               </button>
             </div>
             
