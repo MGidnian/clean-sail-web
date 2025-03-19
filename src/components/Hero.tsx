@@ -10,7 +10,7 @@ export const Hero = () => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const handleAppStoreClick = () => {
     // Open App Store link
-    window.open('https://apps.apple.com/app/fisherman/id123456789?utm_source=website&utm_medium=hero_section&utm_campaign=top_button', '_blank');
+    window.open('https://apps.apple.com/il/app/fisherman-sms-filtering/id6449192504?utm_source=website&utm_medium=hero_section&utm_campaign=top_button', '_blank');
 
     // Log event to Clarity
     if (window.clarity) {
