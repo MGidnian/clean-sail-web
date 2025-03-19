@@ -84,7 +84,7 @@ export const Reviews = () => {
     }
   ];
 
-  // Use autoplay carousel hook
+  // Use autoplay carousel hook with faster speed on desktop
   const { setApi, handleMouseEnter, handleMouseLeave } = useAutoplayCarousel(3000);
 
   // Log event to Clarity when carousel interacted with

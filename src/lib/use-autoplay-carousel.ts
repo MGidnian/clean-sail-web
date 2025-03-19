@@ -1,17 +1,18 @@
 
-import { useEffect } from "react";
-import { useCarousel } from "@/components/ui/carousel";
+import { useEffect, useState, useCallback } from "react";
+import type { CarouselApi } from "@/components/ui/carousel";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-export function useAutoplayCarousel(apiRef: ReturnType<typeof useCarousel>, intervalMs = 2000) {
+export function useAutoplayCarousel(intervalMs = 2000) {
   const isMobile = useIsMobile();
+  const [api, setApi] = useState<CarouselApi>();
+  const [isPaused, setIsPaused] = useState(false);
   
-  // Use a faster interval for desktop (half the time)
+  // Use a faster interval for desktop (2x faster)
   const desktopInterval = intervalMs / 2;
   
   useEffect(() => {
-    const api = apiRef.current;
-    if (!api || api.count <= 1) {
+    if (!api || isPaused) {
       return;
     }
 
@@ -22,5 +23,19 @@ export function useAutoplayCarousel(apiRef: ReturnType<typeof useCarousel>, inte
 
     // Clear the interval when component unmounts
     return () => clearInterval(interval);
-  }, [apiRef, intervalMs, isMobile, desktopInterval]);
+  }, [api, intervalMs, isMobile, desktopInterval, isPaused]);
+
+  const handleMouseEnter = useCallback(() => {
+    setIsPaused(true);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsPaused(false);
+  }, []);
+
+  return {
+    setApi,
+    handleMouseEnter,
+    handleMouseLeave
+  };
 }
