@@ -105,7 +105,7 @@ export const GooglePlayModal: React.FC<GooglePlayModalProps> = ({ isOpen, onClos
       
       // Create the Google Apps Script URL with query parameters
       // Replace this URL with your actual Google Apps Script web app URL
-      const scriptUrl = new URL("https://script.google.com/macros/s/AKfycbzSZEpnh0CHz5_sRoMVJmDpFM707QcFSK70a7_d1PsP-2R8pDFFxIeNNdGVq-iOOhFFeg/exec");
+      const scriptUrl = new URL("https://script.google.com/macros/s/AKfycbyg0tpuaB6FdH4pKN2qZY6BXF9Gt5ZcBYpAr4OveR7JtNmAAYDvojfwIGzTmNQODXNyDQ/exec");
       
       // Add parameters to the URL
       scriptUrl.searchParams.append("contactMethod", contactMethod);
