@@ -99,20 +99,27 @@ export const GooglePlayModal: React.FC<GooglePlayModalProps> = ({ isOpen, onClos
     setIsSubmitting(true);
     
     try {
-      // Mock API call - in a real app, you would send data to your endpoint
-      // const response = await fetch('https://script.google.com/macros/save_fisherman_data_to_excel', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({
-      //     contactMethod,
-      //     email: contactMethod === 'email' ? email : '',
-      //     phone: contactMethod === 'phone' ? `${prefix}${phone}` : '',
-      //     timestamp: new Date().toISOString()
-      //   })
-      // });
+      // Prepare the data
+      const contactInfo = contactMethod === 'phone' ? `${prefix}${phone}` : email;
+      const timestamp = new Date().toISOString();
       
-      // Simulate API response
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Create the Google Apps Script URL with query parameters
+      // Replace this URL with your actual Google Apps Script web app URL
+      const scriptUrl = new URL("https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec");
+      
+      // Add parameters to the URL
+      scriptUrl.searchParams.append("contactMethod", contactMethod);
+      scriptUrl.searchParams.append("contactInfo", contactInfo);
+      scriptUrl.searchParams.append("timestamp", timestamp);
+      
+      // Send the GET request
+      const response = await fetch(scriptUrl.toString(), {
+        method: "GET",
+        mode: "no-cors" // This is important for cross-origin requests to Google Apps Script
+      });
+      
+      // Since we're using no-cors, we can't actually check the response status
+      // So we'll assume success if no error is thrown
       
       // Show success toast
       toast({
