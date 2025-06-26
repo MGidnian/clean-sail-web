@@ -1,13 +1,10 @@
 
 import React, { useEffect, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
-import { useAutoplayCarousel } from '@/lib/use-autoplay-carousel';
 
 export const Brands = () => {
   const { t } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
-  const { setApi, handleMouseEnter, handleMouseLeave } = useAutoplayCarousel(3000);
 
   // Log brand section view to Clarity
   useEffect(() => {
@@ -56,44 +53,34 @@ export const Brands = () => {
     }
   ];
 
+  // Duplicate brands for seamless loop effect
+  const duplicatedBrands = [...brands, ...brands];
+
   return (
-    <section className="py-10 bg-fisherman-gray">
+    <section className="py-10 bg-fisherman-gray overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <h3 className="text-lg text-center text-gray-500 mb-6">{t('brands.asSeenIn')}</h3>
         
-        <div ref={containerRef} className="max-w-4xl mx-auto">
-          <Carousel
-            setApi={setApi}
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <CarouselContent className="-ml-2 md:-ml-4">
-              {brands.map((brand, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3">
-                  <div className="flex justify-center items-center p-4">
-                    <a 
-                      href={brand.url}
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="opacity-70 hover:opacity-100 transition-opacity cursor-pointer"
-                      onClick={() => handleBrandClick(brand.name)}
-                    >
-                      <img 
-                        src={brand.logo}
-                        alt={brand.name}
-                        className="h-14 md:h-16 w-auto" 
-                      />
-                    </a>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
+        <div ref={containerRef} className="max-w-full">
+          <div className="flex animate-carousel">
+            {duplicatedBrands.map((brand, index) => (
+              <div key={index} className="flex-shrink-0 w-64 flex justify-center items-center p-4">
+                <a 
+                  href={brand.url}
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="opacity-70 hover:opacity-100 transition-opacity cursor-pointer"
+                  onClick={() => handleBrandClick(brand.name)}
+                >
+                  <img 
+                    src={brand.logo}
+                    alt={brand.name}
+                    className="h-20 md:h-24 w-auto" 
+                  />
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

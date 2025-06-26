@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -114,12 +113,8 @@ export default {
 					"100%": { transform: "translateX(100%)" }
 				},
 				'carousel': {
-					'0%, 16%': { transform: 'translateX(0)' },
-					'20%, 36%': { transform: 'translateX(-100%)' },
-					'40%, 56%': { transform: 'translateX(-200%)' },
-					'60%, 76%': { transform: 'translateX(-300%)' },
-					'80%, 96%': { transform: 'translateX(-400%)' },
-					'100%': { transform: 'translateX(0)' },
+					'0%': { transform: 'translateX(0)' },
+					'100%': { transform: 'translateX(-50%)' },
 				}
 			},
 			animation: {
@@ -130,7 +125,7 @@ export default {
 				'slide-in-right': 'slide-in-right 0.3s ease-out',
 				'slide-out-right': 'slide-out-right 0.3s ease-out',
 				'enter': 'fade-in 0.3s ease-out',
-				'carousel': 'carousel 30s infinite linear',
+				'carousel': 'carousel 20s infinite linear',
 			}
 		}
 	},
