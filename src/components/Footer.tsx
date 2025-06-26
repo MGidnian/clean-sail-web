@@ -1,10 +1,10 @@
+
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Instagram, Facebook, Mail, MessageSquare, Linkedin } from 'lucide-react';
+
 export const Footer = () => {
-  const {
-    t
-  } = useLanguage();
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   // Log social media or link click to Clarity
@@ -16,7 +16,9 @@ export const Footer = () => {
       });
     }
   };
-  return <footer className="py-12 bg-fisherman-darkGray text-white">
+
+  return (
+    <footer className="py-12 bg-fisherman-darkGray text-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
@@ -27,10 +29,10 @@ export const Footer = () => {
           </div>
           
           <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 mb-6 md:mb-0">
-            <a href="/privacy" onClick={() => handleLinkClick('page', 'privacy')} className="hover:text-blue-300 transition-colors mx-0 px-[8px]">
+            <a href="/docs/privacy.html" onClick={() => handleLinkClick('page', 'privacy')} className="hover:text-blue-300 transition-colors mx-0 px-[8px]">
               {t('footer.privacy')}
             </a>
-            <a href="/terms" className="hover:text-blue-300 transition-colors" onClick={() => handleLinkClick('page', 'terms')}>
+            <a href="/docs/terms.html" className="hover:text-blue-300 transition-colors" onClick={() => handleLinkClick('page', 'terms')}>
               {t('footer.terms')}
             </a>
             <a href="#" className="hover:text-blue-300 transition-colors" onClick={() => handleLinkClick('page', 'contact')}>
@@ -67,5 +69,6 @@ export const Footer = () => {
           © {currentYear} {t('footer.copyright').replace('2024', currentYear.toString())}
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 };
