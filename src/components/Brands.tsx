@@ -53,9 +53,6 @@ export const Brands = () => {
     }
   ];
 
-  // Duplicate brands for seamless loop effect
-  const duplicatedBrands = [...brands, ...brands];
-
   return (
     <section className="py-10 bg-fisherman-gray overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
@@ -63,7 +60,7 @@ export const Brands = () => {
         
         <div ref={containerRef} className="max-w-full">
           <div className="flex animate-carousel">
-            {duplicatedBrands.map((brand, index) => (
+            {brands.map((brand, index) => (
               <div key={index} className="flex-shrink-0 w-64 flex justify-center items-center p-4">
                 <a 
                   href={brand.url}

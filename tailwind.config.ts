@@ -114,7 +114,9 @@ export default {
 				},
 				'carousel': {
 					'0%': { transform: 'translateX(0)' },
-					'100%': { transform: 'translateX(-50%)' },
+					'33.33%': { transform: 'translateX(-33.33%)' },
+					'66.66%': { transform: 'translateX(-66.66%)' },
+					'100%': { transform: 'translateX(-100%)' },
 				}
 			},
 			animation: {
@@ -125,7 +127,7 @@ export default {
 				'slide-in-right': 'slide-in-right 0.3s ease-out',
 				'slide-out-right': 'slide-out-right 0.3s ease-out',
 				'enter': 'fade-in 0.3s ease-out',
-				'carousel': 'carousel 20s infinite linear',
+				'carousel': 'carousel 15s infinite linear',
 			}
 		}
 	},
