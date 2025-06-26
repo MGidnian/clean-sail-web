@@ -3,6 +3,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { X, Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useIsMobile } from '@/hooks/use-mobile';
+
 export const Navbar = () => {
   const {
     t,
@@ -12,6 +13,7 @@ export const Navbar = () => {
   } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const isMobile = useIsMobile();
+
   const handleAppStoreClick = () => {
     // Open App Store link
     window.open('https://apps.apple.com/il/app/fisherman-sms-filtering/id6449192504?utm_source=website&utm_medium=navbar&utm_campaign=download_button', '_blank');
@@ -21,6 +23,11 @@ export const Navbar = () => {
       window.clarity("event", "navbar_app_store_click");
     }
   };
+
+  const handleLogoClick = () => {
+    window.location.href = 'https://fisherman.app';
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -34,15 +41,19 @@ export const Navbar = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  return <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
+
+  return (
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <img src="/lovable-uploads/cd6dbc8b-e617-4255-9828-6242b468cee5.png" alt="Fisherman Logo" className="w-6 h-6 md:w-8 md:h-8 mr-2 rounded-md" />
-            <span className="text-xl font-bold text-fisherman-blue px-[4px]">
-              {language === 'he' ? 'פישרמן' : 'Fisherman'}
-            </span>
+            <button onClick={handleLogoClick} className="flex items-center hover:opacity-80 transition-opacity">
+              <img src="/lovable-uploads/cd6dbc8b-e617-4255-9828-6242b468cee5.png" alt="Fisherman Logo" className="w-6 h-6 md:w-8 md:h-8 mr-2 rounded-md" />
+              <span className="text-xl font-bold text-fisherman-blue px-[4px]">
+                {language === 'he' ? 'פישרמן' : 'Fisherman'}
+              </span>
+            </button>
           </div>
           
           {/* Desktop Navigation */}
@@ -114,5 +125,6 @@ export const Navbar = () => {
           </div>
         </div>
       </div>
-    </nav>;
+    </nav>
+  );
 };

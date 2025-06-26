@@ -17,6 +17,11 @@ export const Footer = () => {
     }
   };
 
+  const handleWhatsAppClick = () => {
+    window.open('https://wa.me/972523632387?text=היי פישרמן, מה שלומך?', '_blank');
+    handleLinkClick('social', 'whatsapp');
+  };
+
   return (
     <footer className="py-12 bg-fisherman-darkGray text-white">
       <div className="container mx-auto px-4 md:px-6">
@@ -56,10 +61,10 @@ export const Footer = () => {
             <a href="#" className="hover:text-blue-300 transition-colors p-2" onClick={() => handleLinkClick('social', 'linkedin')}>
               <Linkedin size={20} />
             </a>
-            <a href="#" className="hover:text-blue-300 transition-colors p-2" onClick={() => handleLinkClick('social', 'whatsapp')}>
+            <button onClick={handleWhatsAppClick} className="hover:text-blue-300 transition-colors p-2">
               <MessageSquare size={20} />
-            </a>
-            <a href="mailto:info@fisherman.app" className="hover:text-blue-300 transition-colors p-2" onClick={() => handleLinkClick('email', 'info')}>
+            </button>
+            <a href="mailto:support@fisherman.app" className="hover:text-blue-300 transition-colors p-2" onClick={() => handleLinkClick('email', 'support')}>
               <Mail size={20} />
             </a>
           </div>
