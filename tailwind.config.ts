@@ -127,7 +127,7 @@ export default {
 				'slide-in-right': 'slide-in-right 0.3s ease-out',
 				'slide-out-right': 'slide-out-right 0.3s ease-out',
 				'enter': 'fade-in 0.3s ease-out',
-				'carousel': 'carousel 15s infinite linear',
+				'carousel': 'carousel 6s infinite linear',
 			}
 		}
 	},

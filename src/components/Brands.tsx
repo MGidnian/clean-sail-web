@@ -59,7 +59,7 @@ export const Brands = () => {
         <h3 className="text-lg text-center text-gray-500 mb-6">{t('brands.asSeenIn')}</h3>
         
         <div ref={containerRef} className="max-w-full">
-          <div className="flex animate-carousel">
+          <div className="flex animate-carousel lg:animate-none lg:justify-center">
             {brands.map((brand, index) => (
               <div key={index} className="flex-shrink-0 w-64 flex justify-center items-center p-4">
                 <a 
@@ -72,7 +72,7 @@ export const Brands = () => {
                   <img 
                     src={brand.logo}
                     alt={brand.name}
-                    className="h-20 md:h-24 w-auto" 
+                    className="h-28 md:h-32 w-auto" 
                   />
                 </a>
               </div>
