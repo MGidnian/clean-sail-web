@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Instagram, Facebook, Mail, MessageSquare, Linkedin } from 'lucide-react';
@@ -22,6 +21,11 @@ export const Footer = () => {
     handleLinkClick('social', 'whatsapp');
   };
 
+  const handleTermsClick = () => {
+    window.location.href = '/terms';
+    handleLinkClick('page', 'terms');
+  };
+
   return (
     <footer className="py-12 bg-fisherman-darkGray text-white">
       <div className="container mx-auto px-4 md:px-6">
@@ -37,9 +41,9 @@ export const Footer = () => {
             <a href="/docs/privacy.html" onClick={() => handleLinkClick('page', 'privacy')} className="hover:text-blue-300 transition-colors mx-0 px-[8px]">
               {t('footer.privacy')}
             </a>
-            <a href="/docs/terms.html" className="hover:text-blue-300 transition-colors" onClick={() => handleLinkClick('page', 'terms')}>
+            <button onClick={handleTermsClick} className="hover:text-blue-300 transition-colors text-left">
               {t('footer.terms')}
-            </a>
+            </button>
             <a href="#" className="hover:text-blue-300 transition-colors" onClick={() => handleLinkClick('page', 'contact')}>
               {t('footer.contact')}
             </a>

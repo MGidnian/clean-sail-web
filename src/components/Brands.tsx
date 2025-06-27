@@ -53,15 +53,18 @@ export const Brands = () => {
     }
   ];
 
+  // Create duplicated brands array for seamless loop
+  const duplicatedBrands = [...brands, ...brands];
+
   return (
     <section className="py-10 bg-fisherman-gray overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <h3 className="text-lg text-center text-gray-500 mb-6">{t('brands.asSeenIn')}</h3>
         
         <div ref={containerRef} className="max-w-full">
-          <div className="flex animate-carousel lg:animate-none lg:justify-center">
-            {brands.map((brand, index) => (
-              <div key={index} className="flex-shrink-0 w-64 flex justify-center items-center p-4">
+          <div className="flex animate-infinite-carousel lg:animate-none lg:justify-center">
+            {duplicatedBrands.map((brand, index) => (
+              <div key={`${brand.name}-${index}`} className="flex-shrink-0 w-64 flex justify-center items-center p-4">
                 <a 
                   href={brand.url}
                   target="_blank" 
