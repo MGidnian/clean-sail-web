@@ -53,18 +53,17 @@ export const Brands = () => {
     }
   ];
 
-  // Create duplicated brands array for seamless loop
-  const duplicatedBrands = [...brands, ...brands];
-
   return (
     <section className="py-10 bg-fisherman-gray overflow-hidden">
-      <div className="container mx-auto px-4 md:px-6">
-        <h3 className="text-lg text-center text-gray-500 mb-6">{t('brands.asSeenIn')}</h3>
+      <div className="px-4 md:px-6">
+        <div className="container mx-auto">
+          <h3 className="text-lg text-center text-gray-500 mb-6">{t('brands.asSeenIn')}</h3>
+        </div>
         
-        <div ref={containerRef} className="max-w-full">
-          <div className="flex animate-infinite-carousel lg:animate-none lg:justify-center">
-            {duplicatedBrands.map((brand, index) => (
-              <div key={`${brand.name}-${index}`} className="flex-shrink-0 w-64 flex justify-center items-center p-4">
+        <div ref={containerRef} className="w-full">
+          <div className="flex animate-infinite-carousel-fast lg:animate-none lg:justify-center lg:container lg:mx-auto">
+            {brands.map((brand, index) => (
+              <div key={brand.name} className="flex-shrink-0 w-64 flex justify-center items-center p-4">
                 <a 
                   href={brand.url}
                   target="_blank" 
@@ -80,6 +79,26 @@ export const Brands = () => {
                 </a>
               </div>
             ))}
+            {/* Add extra logos for seamless loop on mobile only */}
+            <div className="lg:hidden flex">
+              {brands.map((brand, index) => (
+                <div key={`${brand.name}-duplicate`} className="flex-shrink-0 w-64 flex justify-center items-center p-4">
+                  <a 
+                    href={brand.url}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="opacity-70 hover:opacity-100 transition-opacity cursor-pointer"
+                    onClick={() => handleBrandClick(brand.name)}
+                  >
+                    <img 
+                      src={brand.logo}
+                      alt={brand.name}
+                      className="h-28 md:h-32 w-auto" 
+                    />
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

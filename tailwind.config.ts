@@ -126,6 +126,7 @@ export default {
 				'slide-out-right': 'slide-out-right 0.3s ease-out',
 				'enter': 'fade-in 0.3s ease-out',
 				'infinite-carousel': 'infinite-carousel 8s infinite linear',
+				'infinite-carousel-fast': 'infinite-carousel 5.5s infinite linear',
 			}
 		}
 	},
